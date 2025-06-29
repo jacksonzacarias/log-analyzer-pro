@@ -1,0 +1,115 @@
+Jun 29 Jun 29 05:00:01 server1 sshd[12345]: Accepted password for test from 172.16.0.25 port 12345 ssh2
+Jun 29 Jun 29 02:50:01 server1 sshd[12345]: Accepted password for user from 192.168.1.100 port 12345 ssh2
+Jun 29 Jun 29 00:55:01 server1 sshd[12345]: Accepted password for test from 185.220.101.45 port 12345 ssh2
+Jun 29 Jun 29 00:16:01 server1 sshd[12345]: Accepted password for jackson from 172.16.0.25 port 12345 ssh2
+Jun 29 Jun 28 23:25:01 server1 sshd[12345]: Accepted password for admin from 203.0.113.45 port 12345 ssh2
+Jun 29 Jun 28 21:40:01 server1 sshd[12345]: Accepted password for user from 185.220.101.45 port 12345 ssh2
+Jun 29 Jun 28 18:44:01 server1 sshd[12345]: Accepted password for jackson from 8.8.8.8 port 12345 ssh2
+Jun 29 Jun 28 15:44:01 server1 sshd[12345]: Accepted password for admin from 198.51.100.123 port 12345 ssh2
+Jun 29 Jun 28 12:37:01 server1 sshd[12345]: Accepted password for jackson from 198.51.100.123 port 12345 ssh2
+Jun 29 Jun 28 11:11:01 server1 sshd[12345]: Accepted password for jackson from 203.0.113.45 port 12345 ssh2
+Jun 29 Jun 28 10:07:01 server1 sshd[12345]: Accepted password for developer from 91.234.36.78 port 12345 ssh2
+Jun 29 Jun 28 08:51:01 server1 sshd[12345]: Accepted password for jackson from 91.234.36.78 port 12345 ssh2
+Jun 29 Jun 28 06:29:01 server1 sshd[12345]: Accepted password for test from 185.220.101.45 port 12345 ssh2
+Jun 29 Jun 28 05:23:01 server1 sshd[12345]: Accepted password for test from 45.95.147.12 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Accepted password for user from 91.234.36.78 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Accepted password for admin from 185.220.101.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Accepted password for developer from 192.168.1.100 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Accepted password for admin from 203.0.113.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Accepted password for admin from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Accepted password for test from 1.1.1.1 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for test from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for oracle from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for admin from 45.95.147.12 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for administrator from 8.8.8.8 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for root from 192.168.1.100 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for mysql from 103.21.244.34 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for oracle from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for admin from 1.1.1.1 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for admin from 8.8.8.8 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for oracle from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for root from 185.220.101.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for guest from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for mysql from 91.234.36.78 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for oracle from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for admin from 185.220.101.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for guest from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for administrator from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for oracle from 1.1.1.1 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for guest from 1.1.1.1 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for mysql from 192.168.1.100 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for guest from 103.21.244.34 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for test from 45.95.147.12 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for oracle from 45.95.147.12 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for mysql from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for oracle from 185.220.101.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for admin from 203.0.113.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for root from 8.8.8.8 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for guest from 91.234.36.78 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for mysql from 45.95.147.12 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for test from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for mysql from 91.234.36.78 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for mysql from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for mysql from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for guest from 192.168.1.100 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for administrator from 1.1.1.1 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for administrator from 1.1.1.1 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for root from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for administrator from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for root from 203.0.113.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for admin from 185.220.101.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for test from 185.220.101.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for guest from 203.0.113.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for user from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for test from 91.234.36.78 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for root from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for test from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for guest from 45.95.147.12 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for guest from 91.234.36.78 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for user from 103.21.244.34 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Failed password for user from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user admin123 from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user guest123 from 192.168.1.100 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user admin123 from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user root123 from 103.21.244.34 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user hacker from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user user123 from 198.51.100.123 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user hacker from 192.168.1.100 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user test123 from 203.0.113.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user guest123 from 91.234.36.78 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user user123 from 91.234.36.78 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user test123 from 1.1.1.1 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user hacker from 8.8.8.8 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user guest123 from 185.220.101.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user admin123 from 103.21.244.34 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user user123 from 45.95.147.12 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user user123 from 185.220.101.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user user123 from 103.21.244.34 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user admin123 from 91.234.36.78 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user root123 from 8.8.8.8 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user hacker from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user user123 from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user user123 from 192.168.1.100 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user hacker from 203.0.113.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user guest123 from 172.16.0.25 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user test123 from 91.234.36.78 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user root123 from 8.8.8.8 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user guest123 from 185.220.101.45 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user root123 from 1.1.1.1 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user hacker from 1.1.1.1 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Invalid user test123 from 103.21.244.34 port 12345 ssh2
+Jun 29  server1 sshd[12345]: Connection closed by 45.95.147.12 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 10.0.0.50 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 1.1.1.1 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 172.16.0.25 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 45.95.147.12 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 91.234.36.78 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 10.0.0.50 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 203.0.113.45 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 203.0.113.45 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 8.8.8.8 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 172.16.0.25 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 198.51.100.123 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 1.1.1.1 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 10.0.0.50 port 12345 [preauth]
+Jun 29  server1 sshd[12345]: Connection closed by 198.51.100.123 port 12345 [preauth]
