@@ -35,6 +35,7 @@ ${BOLD}Opções Principais:${RESET}
   -pcn       Gera seção Plano de Continuidade de Negócios
   -peso      Análise por peso de ameaça (CRÍTICO, ALTO, MÉDIO, BAIXO)
   -correl    Correlação de eventos por usuário/IP
+  -train     Sistema de treinamento (adicionar novos padrões de regex)
   -r <file>  Nome do relatório HTML (padrão: relatorio_avancado.html)
   -h, --help Exibe esta ajuda
 
@@ -72,6 +73,7 @@ PEDAGO=false
 PCN=false
 PESO=false
 CORREL=false
+TRAIN=false
 REPORT="relatorio_avancado.html"
 LOG=""
 
@@ -85,6 +87,7 @@ while [[ $# -gt 0 ]]; do
     -pcn)     PCN=true ;;
     -peso)    PESO=true ;;
     -correl)  CORREL=true ;;
+    -train)   TRAIN=true ;;
     -r)       REPORT="$2"; shift ;;
     -h|--help) print_help ;;
     -*)
@@ -103,8 +106,13 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ -z "$LOG" || ! -f "$LOG" ]]; then
-  echo -e "${RED}${BOLD}❌ Erro: arquivo de log não informado ou não encontrado!${RESET}"
-  print_help
+  if $TRAIN; then
+    # Modo de treinamento não precisa de arquivo de log
+    echo -e "${CYAN}${BOLD}🎓 Modo de treinamento ativado${RESET}"
+  else
+    echo -e "${RED}${BOLD}❌ Erro: arquivo de log não informado ou não encontrado!${RESET}"
+    print_help
+  fi
 fi
 
 # -------------------------------------------------------------------------------
@@ -139,6 +147,402 @@ BG_YELLOW="\e[43m"
 BG_BLUE="\e[44m"
 BG_MAGENTA="\e[45m"
 BG_CYAN="\e[46m"
+
+# -------------------------------------------------------------------------------
+# Sistema de Aprendizado Contínuo - Classificação Inteligente de Ataques
+# Permite treinar o script com novos padrões de regex e expandir a detecção
+# -------------------------------------------------------------------------------
+
+# Arquivo de configuração para padrões de aprendizado
+LEARNING_CONFIG_FILE="attack_patterns_learning.conf"
+
+# Função para inicializar arquivo de aprendizado se não existir
+init_learning_system() {
+    if [[ ! -f "$LEARNING_CONFIG_FILE" ]]; then
+        cat > "$LEARNING_CONFIG_FILE" << 'EOF'
+# ===================================================================================
+# SISTEMA DE APRENDIZADO CONTÍNUO - PADRÕES DE ATAQUES
+# ===================================================================================
+# Formato: PADRÃO|CATEGORIA|DESCRIÇÃO|PESO|TAGS
+# Exemplo: "nikto|Scanner|Scanner de vulnerabilidades web|7|scanner,web,automated"
+# ===================================================================================
+
+# PADRÕES EXISTENTES (BASE)
+reverse shell|CRÍTICO|Reverse shell detectado|10|shell,backdoor,crítico
+shell\.php|CRÍTICO|Arquivo shell malicioso|10|shell,backdoor,crítico
+backdoor|CRÍTICO|Backdoor detectado|10|backdoor,malware,crítico
+trojan|CRÍTICO|Trojan detectado|10|trojan,malware,crítico
+virus|CRÍTICO|Vírus detectado|10|virus,malware,crítico
+root shell|CRÍTICO|Shell com privilégios root|10|shell,privilege,crítico
+privilege escalation|CRÍTICO|Elevação de privilégios|10|privilege,escalation,crítico
+data exfiltration|CRÍTICO|Exfiltração de dados|10|data,exfiltration,crítico
+malicioso.*shell|CRÍTICO|Shell malicioso|10|shell,malicioso,crítico
+Comando injetado|CRÍTICO|Comando injetado|10|injection,command,crítico
+cat /flag|CRÍTICO|Tentativa de ler flag|10|flag,read,crítico
+whoami|CRÍTICO|Comando whoami|10|enumeration,user,crítico
+ls;.*cat|CRÍTICO|Comandos concatenados|10|command,chaining,crítico
+rm -rf|CRÍTICO|Comando destrutivo|10|destruction,delete,crítico
+wget.*http://|CRÍTICO|Download remoto|10|download,remote,crítico
+curl.*http://|CRÍTICO|Download remoto|10|download,remote,crítico
+
+# ATAQUES WEB
+SQL Injection|ALTO|Injeção SQL|7|sql,injection,web
+XSS|ALTO|Cross-Site Scripting|7|xss,web,injection
+LFI|ALTO|Local File Inclusion|7|lfi,file,inclusion
+RFI|ALTO|Remote File Inclusion|7|rfi,file,inclusion
+Command Injection|ALTO|Injeção de comandos|7|command,injection,web
+Webshell Upload|ALTO|Upload de webshell|7|webshell,upload,web
+Força bruta|ALTO|Tentativa de força bruta|7|brute,force,auth
+<script|ALTO|Tag script maliciosa|7|script,xss,web
+union.*select|ALTO|SQL Union injection|7|sql,union,injection
+or.*1=1|ALTO|SQL Boolean injection|7|sql,boolean,injection
+../../etc/passwd|ALTO|Path traversal|7|path,traversal,lfi
+
+# SCANNERS E FERRAMENTAS
+nikto|ALTO|Scanner de vulnerabilidades|7|scanner,web,automated
+sqlmap|ALTO|Scanner SQL injection|7|scanner,sql,automated
+nmap|ALTO|Scanner de portas|7|scanner,network,automated
+dirb|ALTO|Scanner de diretórios|7|scanner,web,automated
+gobuster|ALTO|Scanner de diretórios|7|scanner,web,automated
+wpscan|ALTO|Scanner WordPress|7|scanner,wordpress,automated
+
+# DIRETÓRIOS SENSÍVEIS
+/admin/|ALTO|Acesso a admin|7|admin,sensitive,web
+/wp-admin|ALTO|Acesso WordPress admin|7|wordpress,admin,web
+/phpmyadmin|ALTO|Acesso phpMyAdmin|7|phpmyadmin,database,web
+/\.env|ALTO|Arquivo de configuração|7|config,env,web
+/\.git|ALTO|Repositório Git|7|git,version,web
+/\.htaccess|ALTO|Arquivo htaccess|7|htaccess,config,web
+/server-status|ALTO|Status do servidor|7|status,server,web
+/wp-login\.php|ALTO|Login WordPress|7|wordpress,login,web
+/api/upload|ALTO|API de upload|7|api,upload,web
+
+# ERROS HTTP
+Erro 403|ALTO|Acesso negado|7|error,403,web
+Erro 404|MÉDIO|Página não encontrada|4|error,404,web
+Erro 500|ALTO|Erro interno do servidor|7|error,500,web
+
+# SSH
+Invalid user|ALTO|Usuário inválido SSH|7|ssh,user,invalid
+Failed password|ALTO|Senha falhou SSH|7|ssh,password,failed
+Accepted password|MÉDIO|Senha aceita SSH|4|ssh,password,accepted
+session opened|MÉDIO|Sessão SSH aberta|4|ssh,session,opened
+session closed|BAIXO|Sessão SSH fechada|1|ssh,session,closed
+Connection closed|BAIXO|Conexão SSH fechada|1|ssh,connection,closed
+preauth|MÉDIO|Pré-autenticação SSH|4|ssh,preauth
+
+# MYSQL
+Access denied|ALTO|Acesso negado MySQL|7|mysql,access,denied
+SELECT.*FROM.*sensitive|ALTO|Consulta dados sensíveis|7|mysql,select,sensitive
+DROP.*TABLE|CRÍTICO|Drop de tabela|10|mysql,drop,crítico
+DELETE.*FROM|ALTO|Delete de dados|7|mysql,delete,data
+UPDATE.*WHERE|ALTO|Update de dados|7|mysql,update,data
+INSERT.*INTO|MÉDIO|Insert de dados|4|mysql,insert,data
+SHOW.*DATABASES|MÉDIO|Lista databases|4|mysql,show,databases
+SHOW.*TABLES|MÉDIO|Lista tabelas|4|mysql,show,tables
+
+# NGINX
+Permission denied|ALTO|Permissão negada|7|nginx,permission,denied
+too large body|MÉDIO|Corpo muito grande|4|nginx,body,large
+upstream response|MÉDIO|Resposta upstream|4|nginx,upstream,response
+fastcgi|MÉDIO|Erro FastCGI|4|nginx,fastcgi,error
+
+# ATIVIDADES NORMAIS
+backup|INFO|Backup do sistema|0|backup,system,normal
+Verificação antivírus|INFO|Verificação antivírus|0|antivirus,scan,normal
+Atualização automática|INFO|Atualização automática|0|update,auto,normal
+Backup iniciado|INFO|Backup iniciado|0|backup,started,normal
+Login sucesso|BAIXO|Login bem-sucedido|1|login,success,auth
+Upload arquivo|BAIXO|Upload de arquivo|1|upload,file,normal
+Download arquivo|BAIXO|Download de arquivo|1|download,file,normal
+Consulta registro|BAIXO|Consulta de registro|1|query,record,normal
+
+EOF
+        echo -e "${GREEN}${BOLD}✅ Sistema de aprendizado inicializado: $LEARNING_CONFIG_FILE${RESET}"
+    fi
+}
+
+# Função para classificar ataque usando sistema de aprendizado
+classify_attack() {
+    local line="$1"
+    local classifications=()
+    
+    # Carrega padrões do arquivo de aprendizado
+    while IFS='|' read -r pattern category description weight tags; do
+        # Pula comentários e linhas vazias
+        [[ "$pattern" =~ ^#.*$ ]] && continue
+        [[ -z "$pattern" ]] && continue
+        
+        # Verifica se o padrão está na linha
+        if [[ "$line" =~ ${pattern} ]]; then
+            classifications+=("$category|$weight|$description|$tags")
+        fi
+    done < "$LEARNING_CONFIG_FILE"
+    
+    # Retorna a classificação mais crítica (maior peso)
+    if [[ ${#classifications[@]} -gt 0 ]]; then
+        local best_classification=""
+        local max_weight=0
+        
+        for classification in "${classifications[@]}"; do
+            local weight=$(echo "$classification" | cut -d'|' -f2)
+            if (( weight > max_weight )); then
+                max_weight=$weight
+                best_classification="$classification"
+            fi
+        done
+        
+        echo "$best_classification"
+    else
+        echo "DESCONHECIDO|0|Evento não classificado|unknown"
+    fi
+}
+
+# Função para adicionar novo padrão de aprendizado
+add_learning_pattern() {
+    local pattern="$1"
+    local category="$2"
+    local description="$3"
+    local weight="$4"
+    local tags="$5"
+    
+    # Validação básica
+    if [[ -z "$pattern" || -z "$category" || -z "$description" ]]; then
+        echo -e "${RED}${BOLD}❌ Erro: Todos os campos são obrigatórios${RESET}"
+        return 1
+    fi
+    
+    # Adiciona ao arquivo de configuração
+    echo "$pattern|$category|$description|$weight|$tags" >> "$LEARNING_CONFIG_FILE"
+    echo -e "${GREEN}${BOLD}✅ Padrão adicionado: $pattern ($category - ${weight}pts)${RESET}"
+}
+
+# Função para treinar o script com novos padrões
+train_script() {
+    echo -e "${CYAN}${BOLD}🎓 SISTEMA DE TREINAMENTO - ADICIONAR NOVOS PADRÕES${RESET}"
+    echo -e "${CYAN}${BOLD}================================================${RESET}"
+    
+    while true; do
+        echo -e "\n${BOLD}Escolha uma opção:${RESET}"
+        echo "1) Adicionar padrão manualmente"
+        echo "2) Analisar eventos não classificados"
+        echo "3) Sugerir padrões com IA"
+        echo "4) Listar padrões existentes"
+        echo "5) Voltar"
+        
+        read -p "Opção: " choice
+        
+        case $choice in
+            1)
+                add_pattern_manually
+                ;;
+            2)
+                analyze_unclassified_events
+                ;;
+            3)
+                suggest_patterns_with_ai
+                ;;
+            4)
+                list_existing_patterns
+                ;;
+            5)
+                break
+                ;;
+            *)
+                echo -e "${RED}Opção inválida${RESET}"
+                ;;
+        esac
+    done
+}
+
+# Função para adicionar padrão manualmente
+add_pattern_manually() {
+    echo -e "\n${BOLD}📝 ADICIONAR PADRÃO MANUALMENTE${RESET}"
+    echo -e "${BOLD}==============================${RESET}"
+    
+    read -p "Regex/Pattern: " pattern
+    read -p "Categoria (CRÍTICO/ALTO/MÉDIO/BAIXO/INFO): " category
+    read -p "Descrição: " description
+    read -p "Peso (0-10): " weight
+    read -p "Tags (separadas por vírgula): " tags
+    
+    add_learning_pattern "$pattern" "$category" "$description" "$weight" "$tags"
+}
+
+# Função para analisar eventos não classificados
+analyze_unclassified_events() {
+    echo -e "\n${BOLD}🔍 ANALISANDO EVENTOS NÃO CLASSIFICADOS${RESET}"
+    echo -e "${BOLD}=====================================${RESET}"
+    
+    # Verifica se o arquivo de log existe
+    if [[ ! -f "$LOG" ]]; then
+        echo -e "${YELLOW}${BOLD}⚠️  Nenhum arquivo de log carregado para análise${RESET}"
+        echo -e "${CYAN}${BOLD}💡 Use: $0 -v -train <arquivo_de_log> para analisar eventos não classificados${RESET}"
+        return
+    fi
+    
+    local unclassified_count=0
+    local unclassified_events=()
+    
+    # Analisa cada linha do log
+    while IFS= read -r line; do
+        local classification=$(classify_attack "$line")
+        local category=$(echo "$classification" | cut -d'|' -f1)
+        
+        if [[ "$category" == "DESCONHECIDO" ]]; then
+            ((unclassified_count++))
+            unclassified_events+=("$line")
+        fi
+    done < "$LOG"
+    
+    echo -e "${YELLOW}${BOLD}📊 Encontrados $unclassified_count eventos não classificados${RESET}"
+    
+    if [[ $unclassified_count -gt 0 ]]; then
+        echo -e "\n${BOLD}Primeiros 5 eventos não classificados:${RESET}"
+        for i in "${!unclassified_events[@]}"; do
+            if [[ $i -lt 5 ]]; then
+                echo -e "${CYAN}$((i+1)). ${unclassified_events[$i]}${RESET}"
+            fi
+        done
+        
+        echo -e "\n${BOLD}💡 Dica: Use esses eventos para criar novos padrões${RESET}"
+    else
+        echo -e "${GREEN}${BOLD}✅ Todos os eventos foram classificados!${RESET}"
+    fi
+}
+
+# Função para sugerir padrões com IA (simulada)
+suggest_patterns_with_ai() {
+    echo -e "\n${BOLD}🤖 SUGESTÕES DE PADRÕES COM IA${RESET}"
+    echo -e "${BOLD}================================${RESET}"
+    
+    # Verifica se o arquivo de log existe
+    if [[ ! -f "$LOG" ]]; then
+        echo -e "${YELLOW}${BOLD}⚠️  Nenhum arquivo de log carregado para análise${RESET}"
+        echo -e "${CYAN}${BOLD}💡 Use: $0 -v -train <arquivo_de_log> para obter sugestões de padrões${RESET}"
+        return
+    fi
+    
+    echo -e "${CYAN}${BOLD}Análise de padrões comuns em eventos não classificados:${RESET}"
+    
+    # Analisa padrões comuns em eventos não classificados
+    local unclassified_patterns=$(grep -Eo '[A-Za-z0-9._-]+' "$LOG" | sort | uniq -c | sort -nr | head -10)
+    
+    echo -e "\n${BOLD}Padrões mais frequentes:${RESET}"
+    echo "$unclassified_patterns" | while read count pattern; do
+        if [[ $count -gt 2 ]]; then
+            echo -e "${YELLOW}• $pattern (aparece $count vezes)${RESET}"
+        fi
+    done
+    
+    echo -e "\n${BOLD}💡 Sugestões de classificação:${RESET}"
+    echo -e "${GREEN}• Padrões com números: Possível enumeração ou força bruta${RESET}"
+    echo -e "${GREEN}• Padrões com extensões (.php, .js): Possível ataque web${RESET}"
+    echo -e "${GREEN}• Padrões com caracteres especiais: Possível injeção${RESET}"
+}
+
+# Função para listar padrões existentes
+list_existing_patterns() {
+    echo -e "\n${BOLD}📋 PADRÕES EXISTENTES${RESET}"
+    echo -e "${BOLD}====================${RESET}"
+    
+    local category_counts=()
+    
+    while IFS='|' read -r pattern category description weight tags; do
+        [[ "$pattern" =~ ^#.*$ ]] && continue
+        [[ -z "$pattern" ]] && continue
+        
+        # Conta por categoria
+        case "$category" in
+            CRÍTICO) ((category_counts[0]++)) ;;
+            ALTO)    ((category_counts[1]++)) ;;
+            MÉDIO)   ((category_counts[2]++)) ;;
+            BAIXO)   ((category_counts[3]++)) ;;
+            INFO)    ((category_counts[4]++)) ;;
+        esac
+        
+        echo -e "${BOLD}$category${RESET} (${weight}pts): $pattern"
+        echo -e "  ${CYAN}Descrição:${RESET} $description"
+        echo -e "  ${CYAN}Tags:${RESET} $tags"
+        echo
+    done < "$LEARNING_CONFIG_FILE"
+    
+    echo -e "${BOLD}📊 RESUMO POR CATEGORIA:${RESET}"
+    echo -e "${RED}CRÍTICO: ${category_counts[0]:-0} padrões${RESET}"
+    echo -e "${MAGENTA}ALTO: ${category_counts[1]:-0} padrões${RESET}"
+    echo -e "${YELLOW}MÉDIO: ${category_counts[2]:-0} padrões${RESET}"
+    echo -e "${BLUE}BAIXO: ${category_counts[3]:-0} padrões${RESET}"
+    echo -e "${GREEN}INFO: ${category_counts[4]:-0} padrões${RESET}"
+}
+
+# Função para melhorar a análise linha por linha com classificação inteligente
+analyze_line_by_line_enhanced() {
+    echo -e "${CYAN}${BOLD}${UNDERLINE}📋 Análise Linha por Linha - Classificação Inteligente${RESET}"
+    echo -e "${CYAN}${BOLD}=====================================================${RESET}"
+    
+    # Cabeçalho da tabela melhorado
+    printf "%-6s | %-19s | %-15s | %-12s | %-5s | %-8s | %-15s | %-.30s\n" "Linha" "Timestamp" "IP" "Usuário" "Peso" "Nível" "Tipo Ataque" "Ação"
+    printf "${BLUE}%s${RESET}\n" "------------------------------------------------------------------------------------------------------------------------"
+    
+    # Contador de linha
+    local line_number=0
+    
+    # Processa cada linha
+    while IFS= read -r line; do
+        ((line_number++))
+        
+        local timestamp=$(echo "$line" | awk '{print $1" "$2}')
+        local ip=$(echo "$line" | grep -Eo 'IP: [0-9.]+' | awk '{print $2}')
+        local user=$(echo "$line" | grep -Eo 'user: [^ ]+' | awk '{print $2}')
+        local action=$(echo "$line" | grep -Eo 'ação: .*' | sed 's/ação: //')
+        
+        if [[ -n "$timestamp" && -n "$ip" && -n "$user" && -n "$action" ]]; then
+            # Usa classificação inteligente
+            local classification=$(classify_attack "$line")
+            local level=$(echo "$classification" | cut -d'|' -f1)
+            local weight=$(echo "$classification" | cut -d'|' -f2)
+            local attack_type=$(echo "$classification" | cut -d'|' -f3)
+            local tags=$(echo "$classification" | cut -d'|' -f4)
+            
+            # Limita campos para exibição
+            local action_short=$(echo "$action" | tr '\n' ' ' | cut -c1-30)
+            local attack_type_short=$(echo "$attack_type" | cut -c1-15)
+            
+            if [[ ${#action} -gt 30 ]]; then
+                action_short="${action_short}..."
+            fi
+            
+            if [[ ${#attack_type} -gt 15 ]]; then
+                attack_type_short="${attack_type_short}..."
+            fi
+            
+            # Nível: cor simples
+            case "$level" in
+                CRÍTICO) level_style="${RED}" ;;
+                ALTO)    level_style="${MAGENTA}" ;;
+                MÉDIO)   level_style="${YELLOW}" ;;
+                BAIXO)   level_style="${BLUE}" ;;
+                INFO)    level_style="${GREEN}" ;;
+                DESCONHECIDO) level_style="${WHITE}" ;;
+                *)       level_style="${WHITE}" ;;
+            esac
+            
+            # Monta linha e exibe
+            linha_tabela="$(printf '%-6s | %-19s | %-15s | %-12s | %-5s | ' "$line_number" "$timestamp" "$ip" "$user" "$weight")${level_style}$(printf '%-8s' "$level")${RESET} | $(printf '%-15s' "$attack_type_short") | $action_short"
+            echo -e "$linha_tabela"
+            
+            # Modo pedagógico
+            if $PEDAGO && [[ "$level" != "INFO" && "$level" != "DESCONHECIDO" ]]; then
+                echo -e "    ${YELLOW}➔ Tipo: ${BOLD}$attack_type${RESET} | Tags: $tags${RESET}"
+            fi
+            
+            # Linha separadora entre entradas
+            printf "${BLUE}%s${RESET}\n" "------------------------------------------------------------------------------------------------------------------------"
+        fi
+    done < "$LOG"
+    
+    echo
+}
 
 # -------------------------------------------------------------------------------
 # Sistema de Pesos para Classificação de Ameaças (MELHORADO)
@@ -1232,7 +1636,7 @@ create_normalized_log() {
   local temp_file="/tmp/normalized_log_$$.tmp"
   local format=$(detect_log_format "$input_file")
   
-  echo -e "${CYAN}${BOLD}�� Detectado formato: $format${RESET}" >&2
+  echo -e "${CYAN}${BOLD}🔄 Detectado formato: $format${RESET}" >&2
   
   if [[ "$format" == "EMPTY" ]]; then
     echo -e "${YELLOW}${BOLD}⚠️  Arquivo vazio ou não legível${RESET}" >&2
@@ -1256,7 +1660,19 @@ echo -e "${BOLD}${CYAN}${UNDERLINE}🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA
 echo -e "${BOLD}${CYAN}=============================================${RESET}"
 echo
 
-# Carrega logs
+# Inicializa sistema de aprendizado se necessário
+if $TRAIN || [[ -f "$LEARNING_CONFIG_FILE" ]]; then
+    init_learning_system
+    echo -e "${GREEN}${BOLD}✅ Sistema de aprendizado ativo${RESET}"
+fi
+
+# Sistema de treinamento (executa antes de processar logs)
+if $TRAIN; then
+    train_script
+    exit 0
+fi
+
+# Carrega logs (só se não estiver no modo de treinamento)
 if [[ ! -f "$LOG" ]]; then
   echo -e "${RED}${BOLD}❌ Arquivo de log não encontrado: $LOG${RESET}"
   exit 1
@@ -1288,9 +1704,13 @@ trap cleanup EXIT
 echo -e "${GREEN}${BOLD}✅ Log normalizado criado: $NORMALIZED_LOG${RESET}"
 echo
 
-# Análise linha por linha com pesos
+# Análise linha por linha com pesos (versão melhorada se sistema de aprendizado ativo)
 if $VERBOSE; then
-  analyze_line_by_line
+    if [[ -f "$LEARNING_CONFIG_FILE" ]]; then
+        analyze_line_by_line_enhanced
+    else
+        analyze_line_by_line
+    fi
 fi
 
 # Estatísticas gerais
