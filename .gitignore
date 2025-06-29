@@ -1,0 +1,35 @@
+
+# Pasta do site de documentos
+sitedocumentounipar/
+
+# Arquivos PDF
+*.pdf
+
+# Arquivos de imagem do site (opcional - se quiser ignorar)
+sitedocumentounipar/images/
+
+# Logs e arquivos temporários
+*.log
+logs/
+logs_analise.txt
+
+# Arquivos de relatório
+relatorio_*.html
+relatorio_*.md
+
+# Scripts de análise
+scriptlogs*.sh
+
+# Arquivos de documentação
+*.md
+!README.md
+
+# Arquivos de backup
+*.bak
+*.backup
+
+# Arquivos temporários do sistema
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db

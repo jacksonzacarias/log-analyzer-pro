@@ -1,0 +1,1 @@
+Jun 29 12:20:01 server1 CRON[3456]: (root) CMD (php /var/www/html/artisan schedule:run)
