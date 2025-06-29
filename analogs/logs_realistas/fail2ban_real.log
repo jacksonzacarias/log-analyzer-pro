@@ -1,0 +1,75 @@
+2025-06-29 05:00:01 fail2ban.actions: WARNING [sshd] Ban 203.0.113.45
+ fail2ban.actions: WARNING [sshd] Ban 91.234.36.78
+2025-06-29 03:39:01 fail2ban.actions: WARNING [sshd] Ban 185.220.101.45
+2025-06-29 02:31:01 fail2ban.actions: WARNING [sshd] Ban 192.168.1.100
+2025-06-29 02:15:01 fail2ban.actions: WARNING [sshd] Ban 185.220.101.45
+2025-06-29 01:47:01 fail2ban.actions: WARNING [sshd] Ban 103.21.244.34
+2025-06-29 01:00:01 fail2ban.actions: WARNING [sshd] Ban 185.220.101.45
+2025-06-29 00:55:01 fail2ban.actions: WARNING [sshd] Ban 91.234.36.78
+2025-06-29 00:09:01 fail2ban.actions: WARNING [sshd] Ban 185.220.101.45
+2025-06-28 23:52:01 fail2ban.actions: WARNING [sshd] Ban 45.95.147.12
+2025-06-28 22:24:01 fail2ban.actions: WARNING [sshd] Ban 45.95.147.12
+2025-06-28 21:45:01 fail2ban.actions: WARNING [sshd] Ban 45.95.147.12
+2025-06-28 21:05:01 fail2ban.actions: WARNING [sshd] Ban 192.168.1.100
+2025-06-28 20:34:01 fail2ban.actions: WARNING [sshd] Ban 203.0.113.45
+2025-06-28 20:29:01 fail2ban.actions: WARNING [sshd] Ban 91.234.36.78
+2025-06-28 19:54:01 fail2ban.actions: WARNING [sshd] Ban 203.0.113.45
+2025-06-28 19:18:01 fail2ban.actions: WARNING [sshd] Ban 45.95.147.12
+2025-06-28 18:47:01 fail2ban.actions: WARNING [sshd] Ban 91.234.36.78
+2025-06-28 18:34:01 fail2ban.actions: WARNING [sshd] Ban 203.0.113.45
+2025-06-28 17:29:01 fail2ban.actions: WARNING [sshd] Ban 198.51.100.123
+2025-06-28 17:32:01 fail2ban.actions: WARNING [sshd] Ban 185.220.101.45
+2025-06-28 17:00:01 fail2ban.actions: WARNING [sshd] Ban 172.16.0.25
+2025-06-28 16:55:01 fail2ban.actions: WARNING [sshd] Ban 1.1.1.1
+2025-06-28 15:32:01 fail2ban.actions: WARNING [sshd] Ban 1.1.1.1
+2025-06-28 15:08:01 fail2ban.actions: WARNING [sshd] Ban 45.95.147.12
+2025-06-28 14:19:01 fail2ban.filter: INFO [sshd] Found 192.168.1.100 - 2025-06-29 10:30:45
+2025-06-28 14:17:01 fail2ban.filter: INFO [sshd] Found 185.220.101.45 - 2025-06-29 10:30:45
+2025-06-28 14:09:01 fail2ban.filter: INFO [sshd] Found 198.51.100.123 - 2025-06-29 10:30:45
+2025-06-28 14:06:01 fail2ban.filter: INFO [sshd] Found 8.8.8.8 - 2025-06-29 10:30:45
+2025-06-28 13:58:01 fail2ban.filter: INFO [sshd] Found 45.95.147.12 - 2025-06-29 10:30:45
+2025-06-28 13:54:01 fail2ban.filter: INFO [sshd] Found 198.51.100.123 - 2025-06-29 10:30:45
+2025-06-28 13:43:01 fail2ban.filter: INFO [sshd] Found 45.95.147.12 - 2025-06-29 10:30:45
+2025-06-28 13:37:01 fail2ban.filter: INFO [sshd] Found 192.168.1.100 - 2025-06-29 10:30:45
+2025-06-28 13:32:01 fail2ban.filter: INFO [sshd] Found 8.8.8.8 - 2025-06-29 10:30:45
+2025-06-28 13:23:01 fail2ban.filter: INFO [sshd] Found 8.8.8.8 - 2025-06-29 10:30:45
+2025-06-28 13:59:01 fail2ban.filter: INFO [sshd] Found 203.0.113.45 - 2025-06-29 10:30:45
+2025-06-28 13:49:01 fail2ban.filter: INFO [sshd] Found 203.0.113.45 - 2025-06-29 10:30:45
+2025-06-28 13:43:01 fail2ban.filter: INFO [sshd] Found 10.0.0.50 - 2025-06-29 10:30:45
+2025-06-28 13:40:01 fail2ban.filter: INFO [sshd] Found 1.1.1.1 - 2025-06-29 10:30:45
+2025-06-28 13:34:01 fail2ban.filter: INFO [sshd] Found 8.8.8.8 - 2025-06-29 10:30:45
+2025-06-28 13:31:01 fail2ban.filter: INFO [sshd] Found 103.21.244.34 - 2025-06-29 10:30:45
+2025-06-28 13:21:01 fail2ban.filter: INFO [sshd] Found 91.234.36.78 - 2025-06-29 10:30:45
+2025-06-28 13:16:01 fail2ban.filter: INFO [sshd] Found 103.21.244.34 - 2025-06-29 10:30:45
+2025-06-28 13:08:01 fail2ban.filter: INFO [sshd] Found 192.168.1.100 - 2025-06-29 10:30:45
+2025-06-28 13:00:01 fail2ban.filter: INFO [sshd] Found 185.220.101.45 - 2025-06-29 10:30:45
+2025-06-28 12:54:01 fail2ban.filter: INFO [sshd] Found 103.21.244.34 - 2025-06-29 10:30:45
+2025-06-28 12:43:01 fail2ban.filter: INFO [sshd] Found 1.1.1.1 - 2025-06-29 10:30:45
+2025-06-28 12:41:01 fail2ban.filter: INFO [sshd] Found 8.8.8.8 - 2025-06-29 10:30:45
+2025-06-28 12:35:01 fail2ban.filter: INFO [sshd] Found 91.234.36.78 - 2025-06-29 10:30:45
+2025-06-28 12:25:01 fail2ban.filter: INFO [sshd] Found 172.16.0.25 - 2025-06-29 10:30:45
+2025-06-28 12:21:01 fail2ban.filter: INFO [sshd] Found 172.16.0.25 - 2025-06-29 10:30:45
+2025-06-28 12:59:01 fail2ban.filter: INFO [sshd] Found 91.234.36.78 - 2025-06-29 10:30:45
+2025-06-28 12:48:01 fail2ban.filter: INFO [sshd] Found 185.220.101.45 - 2025-06-29 10:30:45
+2025-06-28 12:41:01 fail2ban.filter: INFO [sshd] Found 91.234.36.78 - 2025-06-29 10:30:45
+2025-06-28 12:39:01 fail2ban.filter: INFO [sshd] Found 1.1.1.1 - 2025-06-29 10:30:45
+2025-06-28 12:28:01 fail2ban.filter: INFO [sshd] Found 1.1.1.1 - 2025-06-29 10:30:45
+2025-06-28 12:25:01 fail2ban.filter: INFO [sshd] Found 103.21.244.34 - 2025-06-29 10:30:45
+2025-06-28 12:22:01 fail2ban.filter: INFO [sshd] Found 1.1.1.1 - 2025-06-29 10:30:45
+2025-06-28 12:12:01 fail2ban.filter: INFO [sshd] Found 172.16.0.25 - 2025-06-29 10:30:45
+2025-06-28 12:06:01 fail2ban.filter: INFO [sshd] Found 10.0.0.50 - 2025-06-29 10:30:45
+2025-06-28 11:57:01 fail2ban.filter: INFO [sshd] Found 91.234.36.78 - 2025-06-29 10:30:45
+2025-06-28 11:52:01 fail2ban.filter: INFO [sshd] Found 192.168.1.100 - 2025-06-29 10:30:45
+2025-06-28 11:50:01 fail2ban.filter: INFO [sshd] Found 103.21.244.34 - 2025-06-29 10:30:45
+2025-06-28 11:40:01 fail2ban.filter: INFO [sshd] Found 172.16.0.25 - 2025-06-29 10:30:45
+2025-06-28 11:38:01 fail2ban.filter: INFO [sshd] Found 172.16.0.25 - 2025-06-29 10:30:45
+2025-06-28 11:29:01 fail2ban.actions: WARNING [sshd] Unban 8.8.8.8
+2025-06-28 07:53:01 fail2ban.actions: WARNING [sshd] Unban 203.0.113.45
+ fail2ban.actions: WARNING [sshd] Unban 203.0.113.45
+ fail2ban.actions: WARNING [sshd] Unban 45.95.147.12
+ fail2ban.actions: WARNING [sshd] Unban 1.1.1.1
+ fail2ban.actions: WARNING [sshd] Unban 91.234.36.78
+ fail2ban.actions: WARNING [sshd] Unban 185.220.101.45
+ fail2ban.actions: WARNING [sshd] Unban 172.16.0.25
+ fail2ban.actions: WARNING [sshd] Unban 91.234.36.78
+ fail2ban.actions: WARNING [sshd] Unban 198.51.100.123

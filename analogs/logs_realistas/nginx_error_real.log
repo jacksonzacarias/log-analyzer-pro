@@ -1,0 +1,23 @@
+2025/06/29 05:00:01 [error] 12345#12345: *12345 open() "/var/www/html/.env" failed (13: Permission denied), client: 185.220.101.45
+ [error] 12345#12345: *12345 open() "/var/www/html/.env" failed (13: Permission denied), client: 203.0.113.45
+ [error] 12345#12345: *12345 open() "/var/www/html/.env" failed (13: Permission denied), client: 185.220.101.45
+ [error] 12345#12345: *12345 open() "/var/www/html/.env" failed (13: Permission denied), client: 45.95.147.12
+2025/06/29 03:52:01 [error] 12345#12345: *12345 open() "/var/www/html/.env" failed (13: Permission denied), client: 172.16.0.25
+2025/06/29 03:21:01 [error] 12345#12345: *12345 open() "/var/www/html/.env" failed (13: Permission denied), client: 8.8.8.8
+2025/06/29 02:46:01 [error] 12345#12345: *12345 open() "/var/www/html/.env" failed (13: Permission denied), client: 172.16.0.25
+2025/06/29 02:32:01 [error] 12345#12345: *12345 open() "/var/www/html/.env" failed (13: Permission denied), client: 45.95.147.12
+2025/06/29 02:50:01 [error] 12345#12345: *12345 open() "/var/www/html/.env" failed (13: Permission denied), client: 172.16.0.25
+2025/06/29 02:32:01 [error] 12345#12345: *12345 open() "/var/www/html/.env" failed (13: Permission denied), client: 203.0.113.45
+2025/06/29 02:22:01 [error] 12345#12345: *12345 open() "/var/www/html/config.php" failed (2: No such file or directory), client: 8.8.8.8
+2025/06/29 02:00:01 [error] 12345#12345: *12345 open() "/var/www/html/.git/config" failed (2: No such file or directory), client: 172.16.0.25
+2025/06/29 01:41:01 [error] 12345#12345: *12345 open() "/var/www/html/wp-config.php" failed (2: No such file or directory), client: 45.95.147.12
+2025/06/29 01:32:01 [error] 12345#12345: *12345 open() "/var/www/html/admin/config.php" failed (2: No such file or directory), client: 45.95.147.12
+2025/06/29 02:00:01 [error] 12345#12345: *12345 open() "/var/www/html/backup.sql" failed (2: No such file or directory), client: 172.16.0.25
+2025/06/29 01:41:01 [error] 12345#12345: *12345 open() "/var/www/html/config.php" failed (2: No such file or directory), client: 45.95.147.12
+2025/06/29 01:23:01 [error] 12345#12345: *12345 open() "/var/www/html/config.php" failed (2: No such file or directory), client: 172.16.0.25
+2025/06/29 01:13:01 [error] 12345#12345: *12345 open() "/var/www/html/backup.sql" failed (2: No such file or directory), client: 172.16.0.25
+2025/06/29 00:52:01 [error] 12345#12345: *12345 FastCGI sent in stderr: "PHP message: PHP Warning: include() [function.include]: Failed opening 'shell.php' for inclusion" while reading response header from upstream, client: 8.8.8.8
+2025/06/29 00:19:01 [error] 12345#12345: *12345 FastCGI sent in stderr: "PHP message: PHP Warning: include() [function.include]: Failed opening 'shell.php' for inclusion" while reading response header from upstream, client: 8.8.8.8
+2025/06/28 23:50:01 [error] 12345#12345: *12345 FastCGI sent in stderr: "PHP message: PHP Warning: include() [function.include]: Failed opening 'shell.php' for inclusion" while reading response header from upstream, client: 203.0.113.45
+2025/06/28 22:41:01 [error] 12345#12345: *12345 FastCGI sent in stderr: "PHP message: PHP Warning: include() [function.include]: Failed opening 'shell.php' for inclusion" while reading response header from upstream, client: 8.8.8.8
+2025/06/28 21:54:01 [error] 12345#12345: *12345 FastCGI sent in stderr: "PHP message: PHP Warning: include() [function.include]: Failed opening 'shell.php' for inclusion" while reading response header from upstream, client: 172.16.0.25

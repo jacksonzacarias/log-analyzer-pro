@@ -1,28 +1,40 @@
-
-# Pasta do site de documentos
-sitedocumentounipar/
-
-# Arquivos PDF
-*.pdf
-
-# Arquivos de imagem do site (opcional - se quiser ignorar)
-sitedocumentounipar/images/
-
-
-# Arquivos de relatório
-relatorio_*.html
-
-
-
-
-
-
-# Arquivos de backup
-*.bak
-*.backup
-
-# Arquivos temporários do sistema
+# Arquivos temporários
+temp/
 *.tmp
 *.temp
+
+# Logs de sistema
+system/*.log
+*.log.bak
+
+# Resultados de testes
+results/
+resultados_*/
+
+# Backup
+backup_*/
+
+# Logs realistas (podem ser regenerados)
+logs/realistic/
+
+# Arquivos de configuração sensíveis
+config/secrets.conf
+config/api_keys.conf
+
+# Arquivos de desenvolvimento
+*.swp
+*.swo
+*~
+
+# Arquivos do sistema
 .DS_Store
 Thumbs.db
+
+# Payloads de terceiros (não versionar)
+payloads/sql-injection-payload-list/
+payloads/xss/xsspayloads.txt
+
+# Arquivos de payloads externos
+*.payload
+*.injection
+*.exploit
