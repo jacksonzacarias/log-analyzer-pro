@@ -97,6 +97,10 @@ bash navegar_projeto.sh
 
 # Verificar estrutura
 bash scripts/verificar_estrutura.sh
+
+# Documentação do projeto
+cd docs/project/
+ls
 ```
 
 ## 📊 Estatísticas Atuais
@@ -108,21 +112,37 @@ bash scripts/verificar_estrutura.sh
   - Médio: 12 padrões
   - Baixo: 10 padrões
 
-## 🏗️ Arquitetura
+## ��️ Arquitetura
 
 ```
-src/
-├── modules/
-│   ├── intelligence/          # Módulos de IA
-│   ├── logic/                 # Motor de regras
-│   ├── analysis/              # Análise avançada
-│   └── output/                # Geração de relatórios
-├── scripts/
-│   ├── core/                  # Scripts principais
-│   ├── utils/                 # Utilitários
-│   └── generators/            # Geradores de dados
-└── tests/                     # Testes automatizados
+├── analisar_logs.sh            # Script principal de análise (raiz)
+├── iniciar_projeto.sh          # Inicialização do projeto (raiz)
+├── navegar_projeto.sh          # Navegação interativa (raiz)
+├── preparar_vm.sh              # Preparação de ambiente VM (raiz)
+├── teste_portabilidade.sh      # Teste de portabilidade (raiz)
+├── docs/
+│   └── project/                # Documentação do projeto
+├── config/                     # Configurações do sistema
+├── system/
+│   ├── backup_files/           # Backups automáticos e manuais
+│   ├── logs/                   # Logs do sistema
+│   └── cache/                  # Cache temporário
+├── results/                    # Relatórios e resultados de análise
+├── src/
+│   ├── modules/                # Módulos de IA, lógica, análise e saída
+│   └── scripts/                # Scripts internos do sistema
+├── scripts/                    # Scripts utilitários e auxiliares
+├── tests/                      # Testes automatizados
+├── temp/                       # Arquivos temporários
+├── payloads/                   # Payloads de ataque
+├── analogs/                    # Exemplos e bases de logs
 ```
+
+## 📂 Organização Recomendada
+- **Documentação**: `docs/project/`
+- **Backups**: `system/backup_files/`
+- **Relatórios**: `results/`
+- **Scripts principais**: permanecem na raiz
 
 ## 🔒 Licenciamento
 

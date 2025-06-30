@@ -1,30 +1,37 @@
-# Arquivos temporários
-temp/
+# Arquivos temporários e de backup
+*.backup
 *.tmp
 *.temp
 
-# Logs de sistema
-system/*.log
-*.log.bak
+# Logs do sistema
+system/logs/*
+!system/logs/.gitkeep
+
+# Cache
+system/cache/*
+!system/cache/.gitkeep
+
+# Dados temporários
+temp/*
+!temp/.gitkeep
 
 # Resultados de testes
-results/
-resultados_*/
+tests/results/*
+!tests/results/.gitkeep
 
-# Backup
-backup_*/
-
-# Logs realistas (podem ser regenerados)
-logs/realistic/
-
-# Arquivos de configuração sensíveis
+# Arquivos de configuração local
+config/local.conf
 config/secrets.conf
-config/api_keys.conf
 
-# Arquivos de desenvolvimento
+# Arquivos de ambiente
+.env
+.env.local
+
+# Arquivos de IDE
+.vscode/
+.idea/
 *.swp
 *.swo
-*~
 
 # Arquivos do sistema
 .DS_Store

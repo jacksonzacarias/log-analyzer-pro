@@ -1,0 +1,2 @@
+Mon Jun 29 11:25:33 2025 [pid 1234] CONNECT: Client "203.0.113.5"
+Mon Jun 29 11:25:37 2025 [pid 1234] FAIL LOGIN: Client "203.0.113.5", "admin"

@@ -1,0 +1,10 @@
+2025-06-25 10:00:01 client: 192.168.1.100 server: 10.0.0.1 user: admin ação: GET /login.php HTTP/1.1 - 200 OK
+2025-06-25 10:00:05 client: 203.0.113.45 server: 10.0.0.1 user: guest ação: POST /login.php HTTP/1.1 - 401 Unauthorized
+2025-06-25 10:00:10 client: 198.51.100.23 server: 10.0.0.1 user: admin ação: GET /admin/panel.php HTTP/1.1 - 200 OK
+2025-06-25 10:00:15 client: 192.168.1.100 server: 10.0.0.1 user: admin ação: POST /upload.php HTTP/1.1 - 200 OK
+2025-06-25 10:00:20 client: 203.0.113.45 server: 10.0.0.1 user: guest ação: GET /search.php?q=admin' OR '1'='1 HTTP/1.1 - 500 Error
+2025-06-25 10:00:25 client: 198.51.100.23 server: 10.0.0.1 user: admin ação: POST /api/users HTTP/1.1 - 201 Created
+2025-06-25 10:00:30 client: 192.168.1.100 server: 10.0.0.1 user: admin ação: GET /download.php?file=../../etc/passwd HTTP/1.1 - 200 OK
+2025-06-25 10:00:35 client: 203.0.113.45 server: 10.0.0.1 user: guest ação: POST /comment.php HTTP/1.1 - 200 OK
+2025-06-25 10:00:40 client: 198.51.100.23 server: 10.0.0.1 user: admin ação: GET /profile.php HTTP/1.1 - 200 OK
+2025-06-25 10:00:45 client: 192.168.1.100 server: 10.0.0.1 user: admin ação: POST /api/delete HTTP/1.1 - 200 OK 

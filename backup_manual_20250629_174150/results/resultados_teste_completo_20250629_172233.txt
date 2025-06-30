@@ -1,0 +1,3275 @@
+TESTE COMPLETO DO SISTEMA DE ANÁLISE DE LOGS
+Data/Hora: 2025-06-29 17:22:33
+Script: scriptlogs_avancado.sh
+==================================================================================
+
+==================================================================================
+TESTE: apache2_access.log
+ARQUIVO: apache2_access.log
+DATA/HORA: 2025-06-29 17:22:33
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: APACHE_ACCESS[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_145784.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | anonymous    | 7     | [35mALTO    [0m | Acesso a admin  | Consulta: /admin/ HTTP/1.1 (Er...
+    [33m➔ Tipo: [1mAcesso a admin[0m | Tags: admin,sensitive,web[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+2      | IP: 203.0.113.5     | 203.0.113.5     | anonymous    | 7     | [35mALTO    [0m | Status do servi... | Consulta: /server-status HTTP/...
+    [33m➔ Tipo: [1mStatus do servidor[0m | Tags: status,server,web[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+3      | IP: 192.0.2.10      | 192.0.2.10      | jackson      | 0     | [37mDESCONHECIDO[0m | Evento não cla... | M: /login HTTP/1.1 
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 1 eventos[0m
+  [35m[1m🟣 ALTO: 1 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 3 eventos[0m
+
+[1m🎯 Score de Risco Geral: 17 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 anonymous: 2 eventos normais (1 IPs)[0m
+[32m[1m🟢 jackson: 1 eventos normais (1 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: anonymous[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [41m[37m[1m🔴 CRÍTICO[0m (14pts) | Consulta: /admin/ HTTP/1.1 (Erro 403)
+  [1mIP: 203.0.113.5[0m | [45m[37m[1m🟣 ALTO[0m (7pts) | Consulta: /server-status HTTP/1.1
+
+[36m[1m[4m🔗 Correlação de Eventos - IP: 192.0.2.10 | Usuário: jackson[0m
+[36m[1m==================================================[0m
+  [1mIP: 192.0.2.10[0m | [42m[37m[1m🟢 INFO[0m (0pts) | M: /login HTTP/1.1
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 192.0.2.10[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [31m[1m🔴 CRÍTICO - Ação Imediata Necessária[0m
+  • [1mTotal de Eventos: 3[0m
+  • [1mEventos Críticos: 1[0m
+  • [1mEventos de Alto Risco: 1[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [31m[1mRTO (Recovery Time Objective): < 30 minutos[0m
+  • [31m[1mRPO (Recovery Point Objective): < 5 minutos[0m
+  • [31m[1mMTTR (Mean Time To Repair): < 1 hora[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [31m[1mImediato (0-15 min):[0m
+    - SOC → CISO → Diretoria Executiva
+    - Ativação do plano de crise
+    - Notificação às autoridades (se necessário)
+  • [31m[1mCurto Prazo (15-60 min):[0m
+    - Comunicação interna à equipe
+    - Notificação a clientes críticos
+    - Ativação de equipe de resposta a incidentes
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [31m[1m[5m🚨 PLANO DE CRISE ATIVADO[0m
+  [31m[1mAção imediata necessária - Todos os recursos mobilizados[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: apache2_access.log[0m
+[36m[1m📋 Formato detectado: APACHE_ACCESS[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: import_history.log
+ARQUIVO: import_history.log
+DATA/HORA: 2025-06-29 17:22:34
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: UNKNOWN[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_146191.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 2 eventos[0m
+  [35m[1m🟣 ALTO: 7 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 10 eventos[0m
+
+[1m🎯 Score de Risco Geral: 69 pontos[0m
+[31m[1m[5m🚨 ALERTA: Sistema em alto risco![0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+  [34m2025-06-29 15:: 10 eventos[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+[31m[1m🔴 XSS: 9 tentativas[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [31m• Implementar CSP (Content Security Policy)[0m
+  [31m• Sanitizar inputs de usuário[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [31m[1m🔴 CRÍTICO - Ação Imediata Necessária[0m
+  • [1mTotal de Eventos: 10[0m
+  • [1mEventos Críticos: 2[0m
+  • [1mEventos de Alto Risco: 7[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [31m[1mRTO (Recovery Time Objective): < 30 minutos[0m
+  • [31m[1mRPO (Recovery Point Objective): < 5 minutos[0m
+  • [31m[1mMTTR (Mean Time To Repair): < 1 hora[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [31m[1m🌐 Sistemas Web (Prioridade Máxima)[0m
+    - Aplicações web comprometidas
+    - Servidores web vulneráveis
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[31m[1m🌐 Para Ataques Web:[0m
+  • Isolamento imediato dos servidores web
+  • Ativação de WAF em modo bloqueio
+  • Restore de backups limpos das aplicações
+  • Patch de todas as vulnerabilidades web
+  • Implementação de HTTPS obrigatório
+  • Configuração de headers de segurança
+
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [31m[1mImediato (0-15 min):[0m
+    - SOC → CISO → Diretoria Executiva
+    - Ativação do plano de crise
+    - Notificação às autoridades (se necessário)
+  • [31m[1mCurto Prazo (15-60 min):[0m
+    - Comunicação interna à equipe
+    - Notificação a clientes críticos
+    - Ativação de equipe de resposta a incidentes
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [31m[1m[5m🚨 PLANO DE CRISE ATIVADO[0m
+  [31m[1mAção imediata necessária - Todos os recursos mobilizados[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: import_history.log[0m
+[36m[1m📋 Formato detectado: UNKNOWN[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: mysql.log
+ARQUIVO: mysql.log
+DATA/HORA: 2025-06-29 17:22:35
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: MYSQL[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_146515.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | root         | 0     | [37mDESCONHECIDO[0m | Evento não cla... | Conexão estabelecida 
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 1 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 2 eventos[0m
+  [1m📊 TOTAL: 3 eventos[0m
+
+[1m🎯 Score de Risco Geral: 7 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 jackson: 1 eventos normais (0 IPs)[0m
+[32m[1m🟢 mysql_user: 1 eventos normais (0 IPs)[0m
+[32m[1m🟢 root: 1 eventos normais (1 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: root[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [42m[37m[1m🟢 INFO[0m (0pts) | Conexão estabelecida
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [33m[1m🟡 MÉDIO - Monitoramento Intensivo[0m
+  • [1mTotal de Eventos: 3[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 1[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [33m[1mRTO (Recovery Time Objective): < 4 horas[0m
+  • [33m[1mRPO (Recovery Point Objective): < 1 hora[0m
+  • [33m[1mMTTR (Mean Time To Repair): < 8 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [31m[1m🗄️  Bancos de Dados (Prioridade Máxima)[0m
+    - Dados sensíveis em risco
+    - Integridade comprometida
+  • [31m[1m📤 Dados Corporativos (Prioridade Máxima)[0m
+    - Informações confidenciais vazadas
+    - Propriedade intelectual comprometida
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[31m[1m🗄️  Para Ataques de Banco de Dados:[0m
+  • Isolamento imediato dos servidores de BD
+  • Backup de emergência dos dados críticos
+  • Restore de backup limpo do banco
+  • Implementação de prepared statements
+  • Configuração de firewall específico para BD
+  • Auditoria completa de permissões
+
+[31m[1m📤 Para Vazamento de Dados:[0m
+  • Notificação imediata à equipe jurídica
+  • Avaliação do impacto regulatório (LGPD/GDPR)
+  • Implementação de DLP (Data Loss Prevention)
+  • Criptografia de dados sensíveis
+  • Auditoria de acesso a dados críticos
+  • Preparação para notificação de autoridades
+
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [33m[1mImediato (0-60 min):[0m
+    - SOC → Gerente de TI
+    - Monitoramento intensivo
+  • [33m[1mCurto Prazo (1-4 horas):[0m
+    - Comunicação interna
+    - Implementação de correções
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [33m[1m📋 PLANO DE CONTINGÊNCIA ATIVADO[0m
+  [33m[1mMonitoramento intensivo - Equipe de TI alertada[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: mysql.log[0m
+[36m[1m📋 Formato detectado: MYSQL[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: nginx_access.log
+ARQUIVO: nginx_access.log
+DATA/HORA: 2025-06-29 17:22:35
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: APACHE_ACCESS[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_146845.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | anonymous    | 7     | [35mALTO    [0m | Login WordPress | M: /wp-login.php HTTP/1.1 (Err...
+    [33m➔ Tipo: [1mLogin WordPress[0m | Tags: wordpress,login,web[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+2      | IP: 203.0.113.5     | 203.0.113.5     | anonymous    | 7     | [35mALTO    [0m | Login WordPress | M: /wp-login.php HTTP/1.1 
+    [33m➔ Tipo: [1mLogin WordPress[0m | Tags: wordpress,login,web[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+3      | IP: 203.0.113.5     | 203.0.113.5     | anonymous    | 7     | [35mALTO    [0m | Arquivo de conf... | Consulta: /.env HTTP/1.1 
+    [33m➔ Tipo: [1mArquivo de configuração[0m | Tags: config,env,web[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+4      | IP: 203.0.113.5     | 203.0.113.5     | anonymous    | 7     | [35mALTO    [0m | Acesso a admin  | Consulta: /admin/config.php HT...
+    [33m➔ Tipo: [1mAcesso a admin[0m | Tags: admin,sensitive,web[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+5      | IP: 192.0.2.10      | 192.0.2.10      | anonymous    | 0     | [37mDESCONHECIDO[0m | Evento não cla... | M: / HTTP/1.1 
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 2 eventos[0m
+  [35m[1m🟣 ALTO: 2 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 5 eventos[0m
+
+[1m🎯 Score de Risco Geral: 34 pontos[0m
+[33m[1m⚠️  ATENÇÃO: Sistema em risco moderado[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 anonymous: 5 eventos normais (2 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: anonymous[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [41m[37m[1m🔴 CRÍTICO[0m (11pts) | M: /wp-login.php HTTP/1.1 (Erro 404)
+  [1mIP: 203.0.113.5[0m | [45m[37m[1m🟣 ALTO[0m (7pts) | M: /wp-login.php HTTP/1.1
+  [1mIP: 203.0.113.5[0m | [45m[37m[1m🟣 ALTO[0m (7pts) | Consulta: /.env HTTP/1.1
+  [1mIP: 203.0.113.5[0m | [41m[37m[1m🔴 CRÍTICO[0m (14pts) | Consulta: /admin/config.php HTTP/1.1 (Erro 403)
+
+[36m[1m[4m🔗 Correlação de Eventos - IP: 192.0.2.10 | Usuário: anonymous[0m
+[36m[1m==================================================[0m
+  [1mIP: 192.0.2.10[0m | [42m[37m[1m🟢 INFO[0m (0pts) | M: / HTTP/1.1
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 192.0.2.10[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [31m[1m🔴 CRÍTICO - Ação Imediata Necessária[0m
+  • [1mTotal de Eventos: 5[0m
+  • [1mEventos Críticos: 2[0m
+  • [1mEventos de Alto Risco: 2[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [31m[1mRTO (Recovery Time Objective): < 30 minutos[0m
+  • [31m[1mRPO (Recovery Point Objective): < 5 minutos[0m
+  • [31m[1mMTTR (Mean Time To Repair): < 1 hora[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [31m[1mImediato (0-15 min):[0m
+    - SOC → CISO → Diretoria Executiva
+    - Ativação do plano de crise
+    - Notificação às autoridades (se necessário)
+  • [31m[1mCurto Prazo (15-60 min):[0m
+    - Comunicação interna à equipe
+    - Notificação a clientes críticos
+    - Ativação de equipe de resposta a incidentes
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [31m[1m[5m🚨 PLANO DE CRISE ATIVADO[0m
+  [31m[1mAção imediata necessária - Todos os recursos mobilizados[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: nginx_access.log[0m
+[36m[1m📋 Formato detectado: APACHE_ACCESS[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: nginx_error.log
+ARQUIVO: nginx_error.log
+DATA/HORA: 2025-06-29 17:22:36
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: NGINX_ERROR[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_147411.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | nginx_user   | 7     | [35mALTO    [0m | Arquivo de conf... | Erro de permissão: GET /.env ...
+    [33m➔ Tipo: [1mArquivo de configuração[0m | Tags: config,env,web[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+2      | IP: 203.0.113.5     | 203.0.113.5     | nginx_user   | 7     | [35mALTO    [0m | Login WordPress | Resposta upstream: POST /wp-lo...
+    [33m➔ Tipo: [1mLogin WordPress[0m | Tags: wordpress,login,web[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+3      | IP: 203.0.113.5     | 203.0.113.5     | nginx_user   | 7     | [35mALTO    [0m | API de upload   | Corpo da requisição muito gr...
+    [33m➔ Tipo: [1mAPI de upload[0m | Tags: api,upload,web[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 1 eventos[0m
+  [35m[1m🟣 ALTO: 2 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 0 eventos[0m
+  [1m📊 TOTAL: 3 eventos[0m
+
+[1m🎯 Score de Risco Geral: 24 pontos[0m
+[33m[1m⚠️  ATENÇÃO: Sistema em risco moderado[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 nginx_user: 3 eventos normais (1 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: nginx_user[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [41m[37m[1m🔴 CRÍTICO[0m (11pts) | Erro de permissão: GET /.env HTTP/1.1
+  [1mIP: 203.0.113.5[0m | [45m[37m[1m🟣 ALTO[0m (7pts) | Resposta upstream: POST /wp-login.php HTTP/1.1
+  [1mIP: 203.0.113.5[0m | [45m[37m[1m🟣 ALTO[0m (7pts) | Corpo da requisição muito grande: POST /api/upload HTTP/1.1
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [31m[1m🔴 CRÍTICO - Ação Imediata Necessária[0m
+  • [1mTotal de Eventos: 3[0m
+  • [1mEventos Críticos: 1[0m
+  • [1mEventos de Alto Risco: 2[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [31m[1mRTO (Recovery Time Objective): < 30 minutos[0m
+  • [31m[1mRPO (Recovery Point Objective): < 5 minutos[0m
+  • [31m[1mMTTR (Mean Time To Repair): < 1 hora[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [31m[1mImediato (0-15 min):[0m
+    - SOC → CISO → Diretoria Executiva
+    - Ativação do plano de crise
+    - Notificação às autoridades (se necessário)
+  • [31m[1mCurto Prazo (15-60 min):[0m
+    - Comunicação interna à equipe
+    - Notificação a clientes críticos
+    - Ativação de equipe de resposta a incidentes
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [31m[1m[5m🚨 PLANO DE CRISE ATIVADO[0m
+  [31m[1mAção imediata necessária - Todos os recursos mobilizados[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: nginx_error.log[0m
+[36m[1m📋 Formato detectado: NGINX_ERROR[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: tentivas-sshubuntu-debian-auth.log
+ARQUIVO: tentivas-sshubuntu-debian-auth.log
+DATA/HORA: 2025-06-29 17:22:36
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: SSH_AUTH[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_147777.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | unknown      | 0     | [37mDESCONHECIDO[0m | Evento não cla... | Tentativa de login com usuári...
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+2      | IP: 203.0.113.5     | 203.0.113.5     | invalid      | 0     | [37mDESCONHECIDO[0m | Evento não cla... | Senha incorreta 
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+3      | IP: 203.0.113.5     | 203.0.113.5     | unknown      | 4     | [33mMÉDIO  [0m | Pré-autentica�... | sshd[24567]: Received disconne...
+    [33m➔ Tipo: [1mPré-autenticação SSH[0m | Tags: ssh,preauth[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+5      | IP: 192.0.2.10      | 192.0.2.10      | password     | 0     | [37mDESCONHECIDO[0m | Evento não cla... | Login bem-sucedido 
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 1 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 5 eventos[0m
+  [1m📊 TOTAL: 6 eventos[0m
+
+[1m🎯 Score de Risco Geral: 4 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 invalid: 1 eventos normais (1 IPs)[0m
+[32m[1m🟢 password: 1 eventos normais (1 IPs)[0m
+[32m[1m🟢 unknown: 3 eventos normais (1 IPs)[0m
+[32m[1m🟢 user: 1 eventos normais (0 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: unknown[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [42m[37m[1m🟢 INFO[0m (0pts) | Tentativa de login com usuário inválido
+  [1mIP: 203.0.113.5[0m | [43m[34m[1m🟡 MÉDIO[0m (4pts) | sshd[24567]: Received disconnect from 203.0.113.5 port 52344:11: Bye Bye [preauth] 
+
+[36m[1m[4m🔗 Correlação de Eventos - IP: 192.0.2.10 | Usuário: password[0m
+[36m[1m==================================================[0m
+  [1mIP: 192.0.2.10[0m | [42m[37m[1m🟢 INFO[0m (0pts) | Login bem-sucedido
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 192.0.2.10[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 6[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [31m[1m🔐 Sistemas de Acesso (Prioridade Alta)[0m
+    - Credenciais comprometidas
+    - Controle de acesso vulnerável
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[31m[1m🔐 Para Ataques SSH:[0m
+  • Bloqueio imediato de IPs suspeitos
+  • Desativação de login por senha
+  • Implementação de chaves SSH
+  • Configuração de Fail2Ban
+  • Mudança de todas as senhas
+  • Implementação de MFA
+
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: tentivas-sshubuntu-debian-auth.log[0m
+[36m[1m📋 Formato detectado: SSH_AUTH[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: access.log
+ARQUIVO: logs/apache/access.log
+DATA/HORA: 2025-06-29 17:22:37
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: APACHE_ACCESS[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_148326.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | anonymous    | 7     | [35mALTO    [0m | Scanner de vuln... | Consulta: /admin/ HTTP/1.1 (Er...
+    [33m➔ Tipo: [1mScanner de vulnerabilidades[0m | Tags: scanner,web,automated[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 1 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 0 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 10 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 anonymous: 1 eventos normais (1 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: anonymous[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [41m[37m[1m🔴 CRÍTICO[0m (21pts) | Consulta: /admin/ HTTP/1.1 (Erro 403) [Scanner: nikto/2.1.6]
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [31m[1m🔴 CRÍTICO - Ação Imediata Necessária[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 1[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [31m[1mRTO (Recovery Time Objective): < 30 minutos[0m
+  • [31m[1mRPO (Recovery Point Objective): < 5 minutos[0m
+  • [31m[1mMTTR (Mean Time To Repair): < 1 hora[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [31m[1mImediato (0-15 min):[0m
+    - SOC → CISO → Diretoria Executiva
+    - Ativação do plano de crise
+    - Notificação às autoridades (se necessário)
+  • [31m[1mCurto Prazo (15-60 min):[0m
+    - Comunicação interna à equipe
+    - Notificação a clientes críticos
+    - Ativação de equipe de resposta a incidentes
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [31m[1m[5m🚨 PLANO DE CRISE ATIVADO[0m
+  [31m[1mAção imediata necessária - Todos os recursos mobilizados[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/apache/access.log[0m
+[36m[1m📋 Formato detectado: APACHE_ACCESS[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: brute_force.log
+ARQUIVO: logs/attacks/brute_force.log
+DATA/HORA: 2025-06-29 17:22:38
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: SSH_AUTH[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_148540.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | invalid      | 0     | [37mDESCONHECIDO[0m | Evento não cla... | Senha incorreta 
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+2      | IP: 203.0.113.5     | 203.0.113.5     | invalid      | 0     | [37mDESCONHECIDO[0m | Evento não cla... | Senha incorreta 
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 2 eventos[0m
+  [1m📊 TOTAL: 2 eventos[0m
+
+[1m🎯 Score de Risco Geral: 0 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 invalid: 2 eventos normais (1 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: invalid[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [42m[37m[1m🟢 INFO[0m (0pts) | Senha incorreta
+  [1mIP: 203.0.113.5[0m | [42m[37m[1m🟢 INFO[0m (0pts) | Senha incorreta
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 2[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/attacks/brute_force.log[0m
+[36m[1m📋 Formato detectado: SSH_AUTH[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: lfi.log
+ARQUIVO: logs/attacks/lfi.log
+DATA/HORA: 2025-06-29 17:22:38
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: APACHE_ACCESS[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_148815.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | anonymous    | 7     | [35mALTO    [0m | Path traversal  | Consulta: /index.php?page=../....
+    [33m➔ Tipo: [1mPath traversal[0m | Tags: path,traversal,lfi[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 1 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 0 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 7 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 anonymous: 1 eventos normais (1 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: anonymous[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [45m[37m[1m🟣 ALTO[0m (7pts) | Consulta: /index.php?page=../../etc/passwd HTTP/1.1
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [33m[1m🟡 MÉDIO - Monitoramento Intensivo[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 1[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [33m[1mRTO (Recovery Time Objective): < 4 horas[0m
+  • [33m[1mRPO (Recovery Point Objective): < 1 hora[0m
+  • [33m[1mMTTR (Mean Time To Repair): < 8 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [33m[1mImediato (0-60 min):[0m
+    - SOC → Gerente de TI
+    - Monitoramento intensivo
+  • [33m[1mCurto Prazo (1-4 horas):[0m
+    - Comunicação interna
+    - Implementação de correções
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [33m[1m📋 PLANO DE CONTINGÊNCIA ATIVADO[0m
+  [33m[1mMonitoramento intensivo - Equipe de TI alertada[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/attacks/lfi.log[0m
+[36m[1m📋 Formato detectado: APACHE_ACCESS[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: sql_injection.log
+ARQUIVO: logs/attacks/sql_injection.log
+DATA/HORA: 2025-06-29 17:22:39
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: APACHE_ACCESS[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_149023.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | anonymous    | 7     | [35mALTO    [0m | Scanner SQL inj... | Consulta: /index.php?id=1' OR ...
+    [33m➔ Tipo: [1mScanner SQL injection[0m | Tags: scanner,sql,automated[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 1 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 0 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 7 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 anonymous: 1 eventos normais (1 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: anonymous[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [45m[37m[1m🟣 ALTO[0m (7pts) | Consulta: /index.php?id=1' OR '1'='1 HTTP/1.1 [Scanner: sqlmap/1.5]
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [33m[1m🟡 MÉDIO - Monitoramento Intensivo[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 1[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [33m[1mRTO (Recovery Time Objective): < 4 horas[0m
+  • [33m[1mRPO (Recovery Point Objective): < 1 hora[0m
+  • [33m[1mMTTR (Mean Time To Repair): < 8 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [33m[1mImediato (0-60 min):[0m
+    - SOC → Gerente de TI
+    - Monitoramento intensivo
+  • [33m[1mCurto Prazo (1-4 horas):[0m
+    - Comunicação interna
+    - Implementação de correções
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [33m[1m📋 PLANO DE CONTINGÊNCIA ATIVADO[0m
+  [33m[1mMonitoramento intensivo - Equipe de TI alertada[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/attacks/sql_injection.log[0m
+[36m[1m📋 Formato detectado: APACHE_ACCESS[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: xss.log
+ARQUIVO: logs/attacks/xss.log
+DATA/HORA: 2025-06-29 17:22:39
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: APACHE_ACCESS[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_149231.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | anonymous    | 7     | [35mALTO    [0m | Tag script mali... | M: /search?q=<script>alert(1)<...
+    [33m➔ Tipo: [1mTag script maliciosa[0m | Tags: script,xss,web[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 1 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 0 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 7 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 anonymous: 1 eventos normais (1 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+[31m[1m🔴 XSS: 1 tentativas[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: anonymous[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [45m[37m[1m🟣 ALTO[0m (7pts) | M: /search?q=<script>alert(1)</script> HTTP/1.1
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [31m• Implementar CSP (Content Security Policy)[0m
+  [31m• Sanitizar inputs de usuário[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [33m[1m🟡 MÉDIO - Monitoramento Intensivo[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 1[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [33m[1mRTO (Recovery Time Objective): < 4 horas[0m
+  • [33m[1mRPO (Recovery Point Objective): < 1 hora[0m
+  • [33m[1mMTTR (Mean Time To Repair): < 8 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [33m[1mImediato (0-60 min):[0m
+    - SOC → Gerente de TI
+    - Monitoramento intensivo
+  • [33m[1mCurto Prazo (1-4 horas):[0m
+    - Comunicação interna
+    - Implementação de correções
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [33m[1m📋 PLANO DE CONTINGÊNCIA ATIVADO[0m
+  [33m[1mMonitoramento intensivo - Equipe de TI alertada[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/attacks/xss.log[0m
+[36m[1m📋 Formato detectado: APACHE_ACCESS[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: auth.log
+ARQUIVO: logs/auth/auth.log
+DATA/HORA: 2025-06-29 17:22:40
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: SSH_AUTH[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_149439.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | unknown      | 0     | [37mDESCONHECIDO[0m | Evento não cla... | Tentativa de login com usuári...
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+2      | IP: 203.0.113.5     | 203.0.113.5     | invalid      | 0     | [37mDESCONHECIDO[0m | Evento não cla... | Senha incorreta 
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+3      | IP: 203.0.113.5     | 203.0.113.5     | unknown      | 4     | [33mMÉDIO  [0m | Pré-autentica�... | sshd[24567]: Received disconne...
+    [33m➔ Tipo: [1mPré-autenticação SSH[0m | Tags: ssh,preauth[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+4      | IP: 192.0.2.10      | 192.0.2.10      | password     | 0     | [37mDESCONHECIDO[0m | Evento não cla... | Login bem-sucedido 
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 1 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 3 eventos[0m
+  [1m📊 TOTAL: 4 eventos[0m
+
+[1m🎯 Score de Risco Geral: 4 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 invalid: 1 eventos normais (1 IPs)[0m
+[32m[1m🟢 password: 1 eventos normais (1 IPs)[0m
+[32m[1m🟢 unknown: 2 eventos normais (1 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: unknown[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [42m[37m[1m🟢 INFO[0m (0pts) | Tentativa de login com usuário inválido
+  [1mIP: 203.0.113.5[0m | [43m[34m[1m🟡 MÉDIO[0m (4pts) | sshd[24567]: Received disconnect from 203.0.113.5 port 52344:11: Bye Bye [preauth]
+
+[36m[1m[4m🔗 Correlação de Eventos - IP: 192.0.2.10 | Usuário: password[0m
+[36m[1m==================================================[0m
+  [1mIP: 192.0.2.10[0m | [42m[37m[1m🟢 INFO[0m (0pts) | Login bem-sucedido
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 192.0.2.10[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 4[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [31m[1m🔐 Sistemas de Acesso (Prioridade Alta)[0m
+    - Credenciais comprometidas
+    - Controle de acesso vulnerável
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[31m[1m🔐 Para Ataques SSH:[0m
+  • Bloqueio imediato de IPs suspeitos
+  • Desativação de login por senha
+  • Implementação de chaves SSH
+  • Configuração de Fail2Ban
+  • Mudança de todas as senhas
+  • Implementação de MFA
+
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/auth/auth.log[0m
+[36m[1m📋 Formato detectado: SSH_AUTH[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: cron.log
+ARQUIVO: logs/cron/cron.log
+DATA/HORA: 2025-06-29 17:22:41
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: UNKNOWN[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_149897.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 0 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/cron/cron.log[0m
+[36m[1m📋 Formato detectado: UNKNOWN[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: query.log
+ARQUIVO: logs/dns/query.log
+DATA/HORA: 2025-06-29 17:22:41
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: UNKNOWN[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_150014.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 0 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/dns/query.log[0m
+[36m[1m📋 Formato detectado: UNKNOWN[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: docker.log
+ARQUIVO: logs/docker/docker.log
+DATA/HORA: 2025-06-29 17:22:41
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: MYSQL[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_150131.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 0 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 mysql_user: 1 eventos normais (0 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/docker/docker.log[0m
+[36m[1m📋 Formato detectado: MYSQL[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: fail2ban.log
+ARQUIVO: logs/fail2ban/fail2ban.log
+DATA/HORA: 2025-06-29 17:22:42
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: UNKNOWN[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_150286.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 0 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+  [34m2025-06-29 11:: 1 eventos[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/fail2ban/fail2ban.log[0m
+[36m[1m📋 Formato detectado: UNKNOWN[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: haproxy.log
+ARQUIVO: logs/haproxy/haproxy.log
+DATA/HORA: 2025-06-29 17:22:42
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: UNKNOWN[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_150403.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 0 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/haproxy/haproxy.log[0m
+[36m[1m📋 Formato detectado: UNKNOWN[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: iptables.log
+ARQUIVO: logs/iptables/iptables.log
+DATA/HORA: 2025-06-29 17:22:42
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: UNKNOWN[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_150520.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 0 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/iptables/iptables.log[0m
+[36m[1m📋 Formato detectado: UNKNOWN[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: letsencrypt.log
+ARQUIVO: logs/letsencrypt/letsencrypt.log
+DATA/HORA: 2025-06-29 17:22:43
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: UNKNOWN[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_150637.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 0 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+  [34m2025-06-29 12:: 1 eventos[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/letsencrypt/letsencrypt.log[0m
+[36m[1m📋 Formato detectado: UNKNOWN[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: mail.log
+ARQUIVO: logs/mail/mail.log
+DATA/HORA: 2025-06-29 17:22:43
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: UNKNOWN[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_150754.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 0 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/mail/mail.log[0m
+[36m[1m📋 Formato detectado: UNKNOWN[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: mysql.log
+ARQUIVO: logs/mysql/mysql.log
+DATA/HORA: 2025-06-29 17:22:43
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: MYSQL[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_150871.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | root         | 0     | [37mDESCONHECIDO[0m | Evento não cla... | Conexão estabelecida 
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 0 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 root: 1 eventos normais (1 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: root[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [42m[37m[1m🟢 INFO[0m (0pts) | Conexão estabelecida
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/mysql/mysql.log[0m
+[36m[1m📋 Formato detectado: MYSQL[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: access.log
+ARQUIVO: logs/nginx/access.log
+DATA/HORA: 2025-06-29 17:22:44
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: APACHE_ACCESS[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_151079.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | anonymous    | 7     | [35mALTO    [0m | Login WordPress | M: /wp-login.php HTTP/1.1 (Err...
+    [33m➔ Tipo: [1mLogin WordPress[0m | Tags: wordpress,login,web[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+2      | IP: 203.0.113.5     | 203.0.113.5     | anonymous    | 7     | [35mALTO    [0m | Login WordPress | M: /wp-login.php HTTP/1.1 
+    [33m➔ Tipo: [1mLogin WordPress[0m | Tags: wordpress,login,web[0m
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 1 eventos[0m
+  [35m[1m🟣 ALTO: 1 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 0 eventos[0m
+  [1m📊 TOTAL: 2 eventos[0m
+
+[1m🎯 Score de Risco Geral: 17 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 anonymous: 2 eventos normais (1 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: anonymous[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [41m[37m[1m🔴 CRÍTICO[0m (11pts) | M: /wp-login.php HTTP/1.1 (Erro 404)
+  [1mIP: 203.0.113.5[0m | [45m[37m[1m🟣 ALTO[0m (7pts) | M: /wp-login.php HTTP/1.1
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [31m[1m🔴 CRÍTICO - Ação Imediata Necessária[0m
+  • [1mTotal de Eventos: 2[0m
+  • [1mEventos Críticos: 1[0m
+  • [1mEventos de Alto Risco: 1[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [31m[1mRTO (Recovery Time Objective): < 30 minutos[0m
+  • [31m[1mRPO (Recovery Point Objective): < 5 minutos[0m
+  • [31m[1mMTTR (Mean Time To Repair): < 1 hora[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [31m[1mImediato (0-15 min):[0m
+    - SOC → CISO → Diretoria Executiva
+    - Ativação do plano de crise
+    - Notificação às autoridades (se necessário)
+  • [31m[1mCurto Prazo (15-60 min):[0m
+    - Comunicação interna à equipe
+    - Notificação a clientes críticos
+    - Ativação de equipe de resposta a incidentes
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [31m[1m[5m🚨 PLANO DE CRISE ATIVADO[0m
+  [31m[1mAção imediata necessária - Todos os recursos mobilizados[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/nginx/access.log[0m
+[36m[1m📋 Formato detectado: APACHE_ACCESS[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: error.log
+ARQUIVO: logs/nginx/error.log
+DATA/HORA: 2025-06-29 17:22:44
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: NGINX_ERROR[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_151375.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+1      | IP: 203.0.113.5     | 203.0.113.5     | nginx_user   | 0     | [37mDESCONHECIDO[0m | Evento não cla... | Erro de permissão:  
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 1 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 0 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 4 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 nginx_user: 1 eventos normais (1 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[36m[1m[4m🔗 Correlação de Eventos - IP: 203.0.113.5 | Usuário: nginx_user[0m
+[36m[1m==================================================[0m
+  [1mIP: 203.0.113.5[0m | [43m[34m[1m🟡 MÉDIO[0m (4pts) | Erro de permissão: 
+
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[1mIP: 203.0.113.5[0m
+[33m[1mTEST-NET (RFC5737) – bloco usado apenas para documentação e testes[0m
+
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/nginx/error.log[0m
+[36m[1m📋 Formato detectado: NGINX_ERROR[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: app-out.log
+ARQUIVO: logs/node_pm2/app-out.log
+DATA/HORA: 2025-06-29 17:22:45
+==================================================================================
+[1m[36m[4m🔍 ANÁLISE AVANÇADA DE LOGS DE SEGURANÇA - v4.0[0m
+[1m[36m=============================================[0m
+
+[32m[1m✅ Sistema de aprendizado ativo[0m
+[36m[1m🔄 Normalizando formato de log...[0m
+[36m[1m🔄 Detectado formato: MYSQL[0m
+[32m[1m✅ Log normalizado criado: /tmp/normalized_log_151576.tmp[0m
+
+[36m[1m[4m📋 Análise Linha por Linha - Classificação Inteligente[0m
+[36m[1m=====================================================[0m
+Linha  | Timestamp           | IP              | Usuário     | Peso  | Nível   | Tipo Ataque     | Ação
+[34m------------------------------------------------------------------------------------------------------------------------[0m
+
+[34m[1m[4m📊 Estatísticas Detalhadas[0m
+[34m[1m=====================[0m
+[1m📈 Distribuição por Nível de Ameaça:[0m
+  [31m[1m🔴 CRÍTICO: 0 eventos[0m
+  [35m[1m🟣 ALTO: 0 eventos[0m
+  [33m[1m🟡 MÉDIO: 0 eventos[0m
+  [34m[1m🔵 BAIXO: 0 eventos[0m
+  [32m[1m🟢 INFO: 1 eventos[0m
+  [1m📊 TOTAL: 1 eventos[0m
+
+[1m🎯 Score de Risco Geral: 0 pontos[0m
+[32m[1m✅ Sistema em risco baixo[0m
+
+[36m[1m[4m⏰ Análise de Padrões Temporais[0m
+[36m[1m=================================[0m
+[1m📊 Eventos por Hora:[0m
+
+[1m🚨 Picos de Atividade Suspeita:[0m
+  [32mNenhum pico significativo detectado[0m
+
+[36m[1m[4m👤 Análise de Comportamento de Usuário[0m
+[36m[1m=========================================[0m
+[32m[1m🟢 mysql_user: 1 eventos normais (0 IPs)[0m
+
+[36m[1m[4m💣 Análise de Payloads[0m
+[36m[1m=====================[0m
+
+[36m[1m[4m🔗 Correlação de Eventos[0m
+[36m[1m=====================[0m
+[34m[1m[4m🌐 Explicação de IPs[0m
+[34m[1m===================[0m
+[32m[1m[4m🛡 Ações Recomendadas[0m
+[32m[1m=====================[0m
+[1m🔧 Recomendações Específicas:[0m
+  [32m• Monitorar logs continuamente[0m
+  [32m• Implementar SIEM[0m
+  [32m• Treinar equipe em segurança[0m
+
+[33m[1m[4m📘 Plano de Continuidade de Negócios - IA[0m
+[33m[1m===========================================[0m
+[1m🎯 Análise de Risco Atual:[0m
+  • [1mNível de Risco: [0m
+    [32m[1m🟢 BAIXO - Manutenção Preventiva[0m
+  • [1mTotal de Eventos: 1[0m
+  • [1mEventos Críticos: 0[0m
+  • [1mEventos de Alto Risco: 0[0m
+
+[1m🎯 Objetivos de Recuperação (RTO/RPO):[0m
+  • [32m[1mRTO (Recovery Time Objective): < 8 horas[0m
+  • [32m[1mRPO (Recovery Point Objective): < 4 horas[0m
+  • [32m[1mMTTR (Mean Time To Repair): < 24 horas[0m
+
+[1m📋 Ativos Críticos Identificados:[0m
+  • [34m[1m🖥️  Infraestrutura Geral[0m
+    - Servidores e redes
+    - Sistemas de backup
+
+
+[1m🔄 Estratégias de Recuperação Específicas:[0m
+[34m[1m🛡️  Estratégias Gerais de Recuperação:[0m
+  • Restore de backups limpos e verificados
+  • Patch imediato de todas as vulnerabilidades
+  • Isolamento de sistemas comprometidos
+  • Implementação de monitoramento avançado
+  • Ativação de alertas em tempo real
+  • Documentação de todos os incidentes
+
+
+[1m📞 Plano de Comunicação:[0m
+  • [32m[1mImediato (0-120 min):[0m
+    - SOC → Equipe de TI
+    - Análise e correção
+  • [32m[1mCurto Prazo (2-8 horas):[0m
+    - Documentação do incidente
+    - Implementação de melhorias
+
+[1m📊 Métricas de Sucesso da Recuperação:[0m
+  • [1mTempo de Detecção (MTTD):[0m < 5 minutos
+  • [1mTempo de Resposta (MTTR):[0m < 1 hora
+  • [1mTempo de Recuperação (RTO):[0m < 4 horas
+  • [1mPerda Máxima de Dados (RPO):[0m < 1 hora
+  • [1mDisponibilidade do Sistema:[0m > 99.9%
+  • [1mTaxa de Falsos Positivos:[0m < 1%
+
+
+[1m🔧 Recomendações de Melhoria Contínua:[0m
+  • [36m[1mImplementar SIEM avançado[0m
+  • [36m[1mAutomatizar resposta a incidentes[0m
+  • [36m[1mImplementar Zero Trust Architecture[0m
+  • [36m[1mTreinar equipe em segurança[0m
+  • [36m[1mRealizar testes de penetração regulares[0m
+  • [36m[1mImplementar backup em nuvem[0m
+  • [36m[1mCriar playbooks de resposta[0m
+  • [36m[1mImplementar monitoramento 24/7[0m
+
+
+[1m🎯 Status do Plano:[0m
+  [32m[1m✅ PLANO PREVENTIVO ATIVADO[0m
+  [32m[1mManutenção preventiva - Monitoramento normal[0m
+
+[32m[1m[5m✅ Análise Avançada Concluída![0m
+[36m[1m📁 Arquivo original: logs/node_pm2/app-out.log[0m
+[36m[1m📋 Formato detectado: MYSQL[0m
+
+==================================================================================
+
+==================================================================================
+TESTE: OpenSSH.log
+ARQUIVO: logs/openssh/OpenSSH.log
+DATA/HORA: 2025-06-29 17:22:45
+==================================================================================
