@@ -17,6 +17,37 @@ WHITE="\e[37m"
 BOLD="\e[1m"
 RESET="\e[0m"
 
+# Variáveis globais
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../../" && pwd)"
+
+# Função para carregar configuração de forma segura
+load_config_safely() {
+    local config_file="$1"
+    local config_type="$2"
+    
+    if [[ ! -f "$config_file" ]]; then
+        echo -e "${YELLOW}⚠️ Arquivo de configuração não encontrado: $config_file${RESET}"
+        return 1
+    fi
+    
+    case "$config_type" in
+        "patterns")
+            load_patterns_config "$config_file"
+            ;;
+        "main")
+            load_main_config "$config_file"
+            ;;
+        "paths")
+            load_paths_config "$config_file"
+            ;;
+        *)
+            echo -e "${RED}❌ Tipo de configuração desconhecido: $config_type${RESET}"
+            return 1
+            ;;
+    esac
+}
+
 # Função para carregar configuração de caminhos
 load_paths_config() {
     local config_file="$1"
@@ -63,21 +94,51 @@ load_main_config() {
 # Função para carregar configuração de padrões
 load_patterns_config() {
     local config_file="$1"
+    echo "  📋 Carregando padrões de ataque..."
     
-    if [[ -z "$config_file" ]]; then
-        config_file="$PATTERNS_CONFIG_FILE"
-    fi
-    
-    if [[ -f "$config_file" ]]; then
-        source "$config_file"
-        if [[ "$VERBOSE" == "true" ]]; then
-            echo -e "${GREEN}${BOLD}✅ Configuração de padrões carregada: $config_file${RESET}"
-        fi
-        return 0
-    else
-        echo -e "${YELLOW}${BOLD}⚠️  Arquivo de configuração de padrões não encontrado: $config_file${RESET}"
+    if [[ ! -f "$config_file" ]]; then
+        echo -e "${YELLOW}⚠️ Arquivo de padrões não encontrado${RESET}"
         return 1
     fi
+    
+    # Inicializa arrays
+    PATTERNS=()
+    SEVERITIES=()
+    DESCRIPTIONS=()
+    SCORES=()
+    TAGS=()
+    
+    local line_number=0
+    local patterns_loaded=0
+    
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        ((line_number++))
+        # Pula comentários e linhas vazias
+        [[ "$line" =~ ^[[:space:]]*# ]] && continue
+        [[ -z "$line" ]] && continue
+        # Espera formato: regex|SEVERIDADE|descrição|pontuação|tags
+        IFS='|' read -r pattern severity description score tags <<< "$line"
+        # Remove espaços extras
+        pattern="${pattern//\"/}"
+        severity="${severity//\"/}"
+        description="${description//\"/}"
+        score="${score//\"/}"
+        tags="${tags//\"/}"
+        # Valida campos obrigatórios
+        if [[ -n "$pattern" && -n "$severity" && -n "$description" ]]; then
+            PATTERNS+=("$pattern")
+            SEVERITIES+=("$severity")
+            DESCRIPTIONS+=("$description")
+            SCORES+=("${score:-0}")
+            TAGS+=("${tags:-}")
+            ((patterns_loaded++))
+        else
+            echo -e "${YELLOW}⚠️ Linha $line_number: Formato inválido${RESET}"
+        fi
+    done < "$config_file"
+    
+    echo "  ✅ $patterns_loaded padrões carregados"
+    return 0
 }
 
 # Função para carregar todas as configurações
@@ -209,7 +270,245 @@ initialize_system() {
     return 0
 }
 
-# Se executado diretamente, inicializa o sistema
+# Função para obter padrão por índice
+get_pattern() {
+    local index="$1"
+    
+    if [[ $index -ge 0 && $index -lt ${#PATTERNS[@]} ]]; then
+        echo "${PATTERNS[$index]}"
+    else
+        echo ""
+    fi
+}
+
+# Função para obter severidade por índice
+get_severity() {
+    local index="$1"
+    
+    if [[ $index -ge 0 && $index -lt ${#SEVERITIES[@]} ]]; then
+        echo "${SEVERITIES[$index]}"
+    else
+        echo ""
+    fi
+}
+
+# Função para obter descrição por índice
+get_description() {
+    local index="$1"
+    
+    if [[ $index -ge 0 && $index -lt ${#DESCRIPTIONS[@]} ]]; then
+        echo "${DESCRIPTIONS[$index]}"
+    else
+        echo ""
+    fi
+}
+
+# Função para obter pontuação por índice
+get_score() {
+    local index="$1"
+    
+    if [[ $index -ge 0 && $index -lt ${#SCORES[@]} ]]; then
+        echo "${SCORES[$index]}"
+    else
+        echo "0"
+    fi
+}
+
+# Função para obter tags por índice
+get_tags() {
+    local index="$1"
+    
+    if [[ $index -ge 0 && $index -lt ${#TAGS[@]} ]]; then
+        echo "${TAGS[$index]}"
+    else
+        echo ""
+    fi
+}
+
+# Função para obter número total de padrões
+get_pattern_count() {
+    echo "${#PATTERNS[@]}"
+}
+
+# Função para buscar padrões por tag
+find_patterns_by_tag() {
+    local search_tag="$1"
+    local found_patterns=()
+    
+    for i in "${!TAGS[@]}"; do
+        if [[ "${TAGS[$i]}" == *"$search_tag"* ]]; then
+            found_patterns+=("$i")
+        fi
+    done
+    
+    echo "${found_patterns[@]}"
+}
+
+# Função para buscar padrões por severidade
+find_patterns_by_severity() {
+    local search_severity="$1"
+    local found_patterns=()
+    
+    for i in "${!SEVERITIES[@]}"; do
+        if [[ "${SEVERITIES[$i]}" == "$search_severity" ]]; then
+            found_patterns+=("$i")
+        fi
+    done
+    
+    echo "${found_patterns[@]}"
+}
+
+# Função para listar todos os padrões
+list_all_patterns() {
+    echo "📋 PADRÕES CARREGADOS"
+    echo "===================="
+    
+    for i in "${!PATTERNS[@]}"; do
+        echo "[$i] ${PATTERNS[$i]}"
+        echo "    Severidade: ${SEVERITIES[$i]}"
+        echo "    Pontuação: ${SCORES[$i]}"
+        echo "    Descrição: ${DESCRIPTIONS[$i]}"
+        echo "    Tags: ${TAGS[$i]}"
+        echo
+    done
+}
+
+# Função para validar configuração
+validate_config() {
+    echo "🔍 Validando configuração..."
+    
+    local errors=0
+    
+    # Valida padrões
+    if [[ ${#PATTERNS[@]} -eq 0 ]]; then
+        echo -e "${YELLOW}⚠️ Nenhum padrão carregado${RESET}"
+        ((errors++))
+    else
+        echo "  ✅ ${#PATTERNS[@]} padrões válidos"
+    fi
+    
+    # Valida severidades
+    if [[ ${#SEVERITIES[@]} -eq 0 ]]; then
+        echo -e "${YELLOW}⚠️ Nenhuma severidade carregada${RESET}"
+        ((errors++))
+    else
+        echo "  ✅ ${#SEVERITIES[@]} severidades válidas"
+    fi
+    
+    # Valida descrições
+    if [[ ${#DESCRIPTIONS[@]} -eq 0 ]]; then
+        echo -e "${YELLOW}⚠️ Nenhuma descrição carregada${RESET}"
+        ((errors++))
+    else
+        echo "  ✅ ${#DESCRIPTIONS[@]} descrições válidas"
+    fi
+    
+    if [[ $errors -eq 0 ]]; then
+        echo -e "${GREEN}✅ Configuração válida${RESET}"
+        return 0
+    else
+        echo -e "${YELLOW}⚠️ $errors problema(s) encontrado(s)${RESET}"
+        return 1
+    fi
+}
+
+# Função para mostrar estatísticas
+show_config_stats() {
+    echo "📊 ESTATÍSTICAS DA CONFIGURAÇÃO"
+    echo "==============================="
+    
+    echo "Padrões: ${#PATTERNS[@]}"
+    echo "Severidades: ${#SEVERITIES[@]}"
+    echo "Descrições: ${#DESCRIPTIONS[@]}"
+    echo "Pontuações: ${#SCORES[@]}"
+    echo "Tags: ${#TAGS[@]}"
+    
+    # Conta severidades
+    local critical=0 medium=0 low=0 high=0
+    
+    for severity in "${SEVERITIES[@]}"; do
+        case "$severity" in
+            "CRÍTICO"|"10") ((critical++)) ;;
+            "ALTO"|"7") ((high++)) ;;
+            "MÉDIO"|"4") ((medium++)) ;;
+            "BAIXO"|"1") ((low++)) ;;
+        esac
+    done
+    
+    echo
+    echo "Distribuição por Severidade:"
+    echo "  Crítico: $critical"
+    echo "  Alto: $high"
+    echo "  Médio: $medium"
+    echo "  Baixo: $low"
+}
+
+# Função principal
+main() {
+    case "${1:-load}" in
+        "load")
+            # Inicializa arrays
+            PATTERNS=()
+            SEVERITIES=()
+            DESCRIPTIONS=()
+            SCORES=()
+            TAGS=()
+            
+            # Carrega configurações
+            load_config_safely "$PROJECT_ROOT/config/attack_patterns_learning.conf" "patterns"
+            load_config_safely "$PROJECT_ROOT/config/main.conf" "main"
+            load_config_safely "$PROJECT_ROOT/config/paths.conf" "paths"
+            
+            # Valida configuração
+            validate_config
+            ;;
+        "list")
+            # Carrega e lista padrões
+            PATTERNS=()
+            SEVERITIES=()
+            DESCRIPTIONS=()
+            SCORES=()
+            TAGS=()
+            
+            load_config_safely "$PROJECT_ROOT/config/attack_patterns_learning.conf" "patterns"
+            list_all_patterns
+            ;;
+        "stats")
+            # Carrega e mostra estatísticas
+            PATTERNS=()
+            SEVERITIES=()
+            DESCRIPTIONS=()
+            SCORES=()
+            TAGS=()
+            
+            load_config_safely "$PROJECT_ROOT/config/attack_patterns_learning.conf" "patterns"
+            show_config_stats
+            ;;
+        "validate")
+            # Valida configuração
+            PATTERNS=()
+            SEVERITIES=()
+            DESCRIPTIONS=()
+            SCORES=()
+            TAGS=()
+            
+            load_config_safely "$PROJECT_ROOT/config/attack_patterns_learning.conf" "patterns"
+            validate_config
+            ;;
+        "help"|*)
+            echo "Uso: $0 [comando]"
+            echo
+            echo "Comandos:"
+            echo "  load     - Carrega todas as configurações (padrão)"
+            echo "  list     - Lista todos os padrões carregados"
+            echo "  stats    - Mostra estatísticas da configuração"
+            echo "  validate - Valida a configuração"
+            echo "  help     - Mostra esta ajuda"
+            ;;
+    esac
+}
+
+# Executa se chamado diretamente
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    initialize_system "true"
+    main "$@"
 fi 
