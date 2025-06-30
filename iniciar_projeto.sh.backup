@@ -1,20 +1,5 @@
 #!/bin/bash
 
-# ==============================================================================
-# PROJETO: LOG ANALYZER PRO v5.0
-# ==============================================================================
-# Autor: Jackson A Z Savoldi
-# Data: 2024-06-29
-# LinkedIn: linkedin.com/in/jacksonzacarias
-# Instagram: @jacksonsavoldi
-# Formação: Sistemas de Informação - UNIPAR Paranavaí
-# Especialização: Segurança da Informação
-# ==============================================================================
-# Direitos reservados. Proibido uso, cópia ou redistribuição sem autorização.
-# ==============================================================================
-
-#!/bin/bash
-
 # ===================================================================================
 # INICIADOR RÁPIDO DO PROJETO - SISTEMA DE ANÁLISE DE LOGS
 # ===================================================================================
@@ -23,14 +8,14 @@
 # ===================================================================================
 
 # Cores
-RED="[31m"
-GREEN="[32m"
-YELLOW="[33m"
-BLUE="[34m"
-CYAN="[36m"
-WHITE="[37m"
-BOLD="[1m"
-RESET="[0m"
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+CYAN="\e[36m"
+WHITE="\e[37m"
+BOLD="\e[1m"
+RESET="\e[0m"
 
 # Configurações
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

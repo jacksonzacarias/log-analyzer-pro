@@ -1,20 +1,5 @@
 #!/bin/bash
 
-# ==============================================================================
-# PROJETO: LOG ANALYZER PRO v5.0
-# ==============================================================================
-# Autor: Jackson A Z Savoldi
-# Data: 2024-06-29
-# LinkedIn: linkedin.com/in/jacksonzacarias
-# Instagram: @jacksonsavoldi
-# Formação: Sistemas de Informação - UNIPAR Paranavaí
-# Especialização: Segurança da Informação
-# ==============================================================================
-# Direitos reservados. Proibido uso, cópia ou redistribuição sem autorização.
-# ==============================================================================
-
-#!/bin/bash
-
 # ===================================================================================
 # PREPARAÇÃO PARA VM - SISTEMA DE ANÁLISE DE LOGS
 # ===================================================================================
@@ -23,14 +8,14 @@
 # ===================================================================================
 
 # Cores para output
-RED="[31m"
-GREEN="[32m"
-YELLOW="[33m"
-BLUE="[34m"
-CYAN="[36m"
-WHITE="[37m"
-BOLD="[1m"
-RESET="[0m"
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+CYAN="\e[36m"
+WHITE="\e[37m"
+BOLD="\e[1m"
+RESET="\e[0m"
 
 # Detecção do diretório raiz
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -139,13 +124,11 @@ check_dependencies() {
     fi
     
     if [[ ${#missing_deps[@]} -gt 0 ]]; then
-        echo -e "
-${RED}❌ Dependências faltando: ${missing_deps[*]}${RESET}"
+        echo -e "\n${RED}❌ Dependências faltando: ${missing_deps[*]}${RESET}"
         echo -e "${YELLOW}💡 Execute: sudo apt update && sudo apt install ${missing_deps[*]}${RESET}"
         return 1
     else
-        echo -e "
-${GREEN}✅ Todas as dependências essenciais estão presentes${RESET}"
+        echo -e "\n${GREEN}✅ Todas as dependências essenciais estão presentes${RESET}"
         return 0
     fi
     
@@ -383,8 +366,7 @@ else
     auto_preparation
     
     # Resumo final
-    echo -e "
-${BOLD}${CYAN}📊 RESUMO DA PREPARAÇÃO${RESET}"
+    echo -e "\n${BOLD}${CYAN}📊 RESUMO DA PREPARAÇÃO${RESET}"
     echo -e "${BOLD}${CYAN}========================${RESET}"
     echo -e "${GREEN}✅ Projeto preparado para VM do Kali Linux${RESET}"
     echo -e "${GREEN}✅ Configuração dinâmica criada${RESET}"
@@ -392,14 +374,12 @@ ${BOLD}${CYAN}📊 RESUMO DA PREPARAÇÃO${RESET}"
     echo -e "${GREEN}✅ Estrutura verificada${RESET}"
     echo -e "${GREEN}✅ Instruções criadas${RESET}"
 
-    echo -e "
-${BOLD}${BLUE}🚀 PRÓXIMOS PASSOS:${RESET}"
+    echo -e "\n${BOLD}${BLUE}🚀 PRÓXIMOS PASSOS:${RESET}"
     echo -e "1. Copie toda a pasta do projeto para a VM do Kali Linux"
     echo -e "2. Na VM, execute: cd /caminho/para/o/projeto"
     echo -e "3. Execute: ./preparar_vm.sh"
     echo -e "4. Execute: ./iniciar_projeto.sh"
     echo -e "5. Teste os scripts de análise"
 
-    echo -e "
-${BOLD}${GREEN}🎉 PROJETO PRONTO PARA USO NA VM!${RESET}"
+    echo -e "\n${BOLD}${GREEN}🎉 PROJETO PRONTO PARA USO NA VM!${RESET}"
 fi 

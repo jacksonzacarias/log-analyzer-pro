@@ -1,18 +1,3 @@
-#!/bin/bash
-
-# ==============================================================================
-# PROJETO: LOG ANALYZER PRO v5.0
-# ==============================================================================
-# Autor: Jackson A Z Savoldi
-# Data: 2024-06-29
-# LinkedIn: linkedin.com/in/jacksonzacarias
-# Instagram: @jacksonsavoldi
-# Formação: Sistemas de Informação - UNIPAR Paranavaí
-# Especialização: Segurança da Informação
-# ==============================================================================
-# Direitos reservados. Proibido uso, cópia ou redistribuição sem autorização.
-# ==============================================================================
-
 #!/usr/bin/env bash
 
 # ===================================================================================
@@ -150,12 +135,12 @@ done
 # -------------------------------------------------------------------------------
 # Cores e estilo
 # -------------------------------------------------------------------------------
-RED="[31m"
-GREEN="[32m"
-YELLOW="[33m"
-BLUE="[34m"
-BOLD="[1m"
-RESET="[0m"
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+BOLD="\e[1m"
+RESET="\e[0m"
 
 
 # Converte timestamp 
@@ -222,9 +207,9 @@ classify_attack() {
   ["Brute Force"]="for(a|ã) bruta|failed login|authentication failure|invalid user"
     ["SQL Injection"]="select[[:space:]].*from|union[[:space:]].*select|or[[:space:]]1=1|--|xp_cmdshell|information_schema"
     ["XSS"]="<script|onerror=|javascript:|<iframe|<img|document\.cookie"
-    ["LFI"]="\.\./|\.\.\\|include[[:space:]].*\.\.|etc/passwd"
+    ["LFI"]="\.\./|\.\.\\\\|include[[:space:]].*\.\.|etc/passwd"
     ["RFI/SSRF"]="(http|https|ftp)://|curl[[:space:]]|wget[[:space:]]"
-    ['Command Injection']=';[[:space:]]*(ls|cat|whoami|id)|\$\([^)]*\)|`[^`]*`|&&|chmod[[:space:]]|nc[[:space:]]'
+    ['Command Injection']=';[[:space:]]*(ls|cat|whoami|id)\b|\$\([^)]*\)|`[^`]*`|&&|chmod[[:space:]]|nc[[:space:]]'
     ["Webshell Upload"]="upload.*\.(php|asp|jsp|exe|sh|bat|cmd|pl|py)"
     ["Malicious File"]="malicioso|trojan|virus|backdoor|reverse shell"
     ["Port Scan"]="nmap|masscan|scan ports|scan ip|zmap"
@@ -233,7 +218,7 @@ classify_attack() {
     ["Denial of Service"]="denial of service|ddos|flood|syn flood"
     ["Suspicious Download"]="download.*\.(exe|bin|scr|dll|iso|msi)"
     ["Unauthorized Access"]="login falha|permission denied|acesso negado|erro de permissão"
-    ["Sensitive File"]="(senha|passwd|credentials|secret|token|key|id_rsa)|\.(txt|csv|pem|key)$"
+    ["Sensitive File"]="\b(senha|passwd|credentials|secret|token|key|id_rsa)\b|\.(txt|csv|pem|key)$"
     ["Backup Completed"]="Backup\s+(iniciado|conclu[ií]do)|backup\s+(iniciado|conclu[ií]do)"
     ["Antivirus Scan"]="Verifica(c|ç)[ãa]o\s+antiv[ií]rus|antiv[ií]rus\s+scan|scan\s+antiv[ií]rus"
     ["System Update"]="Atualiza(c|ç)[ãa]o\s+autom[aá]tica|update\s+autom[aá]tico"
@@ -279,8 +264,7 @@ is_suspect_login() {
     IFS='|' read -r -a seq <<<"${USER_SEQ_BY_IP[$ip]}"
  
     local uniq_users
-    uniq_users=$(printf "%s
-" "${seq[@]}" | grep -v '^$' | sort -u | wc -l)
+    uniq_users=$(printf "%s\n" "${seq[@]}" | grep -v '^$' | sort -u | wc -l)
     if (( uniq_users >= 2 )); then
       echo "Enumeração Suspeita (${uniq_users} usuários)"
       return 0
@@ -367,8 +351,7 @@ print_classification() {
 print_login_stats() {
   echo -e "${BOLD}📈 Estatísticas de Login por IP e Usuário${RESET}"
   for ip in "${!EVENTS_BY_IP[@]}"; do
-    users=$(printf "%s
-" "${LOG_LINES[@]}" \
+    users=$(printf "%s\n" "${LOG_LINES[@]}" \
       | grep "IP: $ip" \
       | grep -Ei 'login falha|login sucesso' \
       | grep -Eo 'user: [^ ]+' | awk '{print $2}' | sort -u)
@@ -378,8 +361,7 @@ print_login_stats() {
   echo
   echo -e "${BOLD}👥 Estatísticas de Acesso por Usuário${RESET}"
   for usr in "${!EVENTS_BY_USER[@]}"; do
-    ips=$(printf "%s
-" "${LOG_LINES[@]}" \
+    ips=$(printf "%s\n" "${LOG_LINES[@]}" \
       | grep "user: $usr" \
       | grep -Eo 'IP: [0-9.]+' | awk '{print $2}' | sort -u)
     count=$(echo "$ips" | grep -c .)
@@ -417,8 +399,7 @@ for L in "${LOG_LINES[@]}"; do
   [[ $act =~ [Ll]ogin\ sucesso ]] && ((SUCCESS_COUNT["$ip"]++))
 done
 
-SUS_EVENTS=$(printf "%s
-" "${LOG_LINES[@]}" \
+SUS_EVENTS=$(printf "%s\n" "${LOG_LINES[@]}" \
   | grep -Ei "falha|malicioso|SQL Injection|shell\.php|<script>")
 
 # -------------------------------------------------------------------------------
@@ -476,8 +457,7 @@ if $VERBOSE; then
 
   
   echo "$SEP"
-  printf " %-${CLF_W}s | %-${DATA_W}s | %-${IP_W}s | %-${USER_W}s | %-${ACTION_W}s 
-" \
+  printf " %-${CLF_W}s | %-${DATA_W}s | %-${IP_W}s | %-${USER_W}s | %-${ACTION_W}s \n" \
     "Clf" "Data" "IP" "Usuário" "Ação"
   echo "$SEP"
 
@@ -519,8 +499,7 @@ if $VERBOSE; then
     # fi
 
 
-  printf " %-${CLF_W}b | %-${DATA_W}s | %-${IP_W}s | %-${USER_W}s | %-${ACTION_W}s
-" \
+  printf " %-${CLF_W}b | %-${DATA_W}s | %-${IP_W}s | %-${USER_W}s | %-${ACTION_W}s\n" \
    "$icon" "$ts" "$ip" "$usr" "$act"
 
  
@@ -539,10 +518,8 @@ if $VERBOSE; then
         *)
           ia_colored="${YELLOW}${BOLD}$ia_label${RESET}" ;;
       esac
-      printf "    ➔ Classificação IA: %b
-" "$ia_colored"
-      printf "  %b
-" "$tag_str"
+      printf "    ➔ Classificação IA: %b\n" "$ia_colored"
+      printf "  %b\n" "$tag_str"
     fi
 
 
@@ -557,8 +534,7 @@ fi
 # 3) Eventos Suspeitos Detectados
 # -------------------------------------------------------------------------------
 echo -e "${RED}${BOLD}🔍 Eventos Suspeitos Detectados:${RESET}"
-printf "%s
-" "${LOG_LINES[@]}" \
+printf "%s\n" "${LOG_LINES[@]}" \
   | grep -Ei "SQL Injection|shell\.php|malicioso|Força bruta|<script>" \
   | sed 's/^/  ⚠ /'
 echo
@@ -567,8 +543,7 @@ echo
 # 4) IPs Maliciosos e Geolocalização
 # -------------------------------------------------------------------------------
 echo -e "${BLUE}${BOLD}🌐 IPs Maliciosos e Classificação:${RESET}"
-for ip in $(printf "%s
-" "${!EVENTS_BY_IP[@]}"); do
+for ip in $(printf "%s\n" "${!EVENTS_BY_IP[@]}"); do
   if grep -Eqi "SQL Injection|shell\.php|malicioso|Força bruta|<script>" \
     <<<"${EVENTS_BY_IP[$ip]}"; then
     echo -e "  - ${BOLD}$ip${RESET} → $(explain_ip "$ip")"
@@ -579,8 +554,7 @@ echo
 # 5) Resumo por IP – Tipo de Ataque e Objetivo
 # -------------------------------------------------------------------------------
 echo -e "${BLUE}${BOLD}📊 Resumo por IP – Ataque e Objetivo:${RESET}"
-for ip in $(printf "%s
-" "${!EVENTS_BY_IP[@]}"); do
+for ip in $(printf "%s\n" "${!EVENTS_BY_IP[@]}"); do
   attacks=$(grep -Eoi "SQL Injection|shell\.php|malicioso|Força bruta|<script>" \
             <<<"${EVENTS_BY_IP[$ip]}" | sort -u | paste -sd", ")
   [[ -n "$attacks" ]] && echo "  • $ip → $attacks"
@@ -595,8 +569,7 @@ print_login_stats
 # -------------------------------------------------------------------------------
 if $TIMELINE; then
   echo -e "${BLUE}${BOLD}🕒 Timeline por IP:${RESET}"
-  for ip in $(printf "%s
-" "${!EVENTS_BY_IP[@]}"); do
+  for ip in $(printf "%s\n" "${!EVENTS_BY_IP[@]}"); do
     echo
     echo -e "  ${BOLD}IP: $ip${RESET}"
 
@@ -605,8 +578,7 @@ if $TIMELINE; then
     fi
 
 
-    printf "%s
-" "${LOG_LINES[@]}" \
+    printf "%s\n" "${LOG_LINES[@]}" \
       | grep "IP: $ip" \
       | while read -r L; do
           ts=$(awk '{print $1" "$2}' <<<"$L")
@@ -672,8 +644,7 @@ cat <<EOF >"$REPORT"
 
   <h2>Eventos Suspeitos</h2>
   <pre>
-$(printf "%s
-" "${LOG_LINES[@]}" \
+$(printf "%s\n" "${LOG_LINES[@]}" \
    | grep -Ei "SQL Injection|shell\.php|malicioso|Força bruta|<script>")
   </pre>
 
@@ -691,8 +662,7 @@ $(for ip in "${!EVENTS_BY_IP[@]}"; do
     echo "<h2>Timeline por IP</h2>"
     for ip in "${!EVENTS_BY_IP[@]}"; do
       echo "<h3>IP: $ip</h3><pre>"
-      printf "%s
-" "${LOG_LINES[@]}" | grep "$ip"
+      printf "%s\n" "${LOG_LINES[@]}" | grep "$ip"
       echo "</pre>"
     done
   fi)

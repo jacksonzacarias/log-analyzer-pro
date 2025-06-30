@@ -1,32 +1,17 @@
 #!/bin/bash
 
-# ==============================================================================
-# PROJETO: LOG ANALYZER PRO v5.0
-# ==============================================================================
-# Autor: Jackson A Z Savoldi
-# Data: 2024-06-29
-# LinkedIn: linkedin.com/in/jacksonzacarias
-# Instagram: @jacksonsavoldi
-# Formação: Sistemas de Informação - UNIPAR Paranavaí
-# Especialização: Segurança da Informação
-# ==============================================================================
-# Direitos reservados. Proibido uso, cópia ou redistribuição sem autorização.
-# ==============================================================================
-
-#!/bin/bash
-
 # Sistema de Inicialização
 # LOG ANALYZER PRO - Versão 5.0
 # Carrega ambiente e prepara sistema
 
 # Cores para output
-RED='[0;31m'
-GREEN='[0;32m'
-YELLOW='[1;33m'
-BLUE='[0;34m'
-PURPLE='[0;35m'
-CYAN='[0;36m'
-NC='[0m' # No Color
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
 
 # Variáveis globais
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

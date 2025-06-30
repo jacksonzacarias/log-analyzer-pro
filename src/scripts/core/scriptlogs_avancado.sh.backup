@@ -1,20 +1,5 @@
 #!/bin/bash
 
-# ==============================================================================
-# PROJETO: LOG ANALYZER PRO v5.0
-# ==============================================================================
-# Autor: Jackson A Z Savoldi
-# Data: 2024-06-29
-# LinkedIn: linkedin.com/in/jacksonzacarias
-# Instagram: @jacksonsavoldi
-# Formação: Sistemas de Informação - UNIPAR Paranavaí
-# Especialização: Segurança da Informação
-# ==============================================================================
-# Direitos reservados. Proibido uso, cópia ou redistribuição sem autorização.
-# ==============================================================================
-
-#!/bin/bash
-
 # ===================================================================================
 # Script Avançado de Análise de Logs de Segurança - Versão 4.0
 # Análise Abrangente com Classificação por Peso e Detecção Avançada
@@ -155,25 +140,25 @@ done
 # -------------------------------------------------------------------------------
 # Cores e estilo APRIMORADOS
 # -------------------------------------------------------------------------------
-RED="[31m"
-GREEN="[32m"
-YELLOW="[33m"
-BLUE="[34m"
-MAGENTA="[35m"
-CYAN="[36m"
-WHITE="[37m"
-BOLD="[1m"
-UNDERLINE="[4m"
-BLINK="[5m"
-RESET="[0m"
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+MAGENTA="\e[35m"
+CYAN="\e[36m"
+WHITE="\e[37m"
+BOLD="\e[1m"
+UNDERLINE="\e[4m"
+BLINK="\e[5m"
+RESET="\e[0m"
 
 # Cores de fundo
-BG_RED="[41m"
-BG_GREEN="[42m"
-BG_YELLOW="[43m"
-BG_BLUE="[44m"
-BG_MAGENTA="[45m"
-BG_CYAN="[46m"
+BG_RED="\e[41m"
+BG_GREEN="\e[42m"
+BG_YELLOW="\e[43m"
+BG_BLUE="\e[44m"
+BG_MAGENTA="\e[45m"
+BG_CYAN="\e[46m"
 
 # -------------------------------------------------------------------------------
 # Sistema de Aprendizado Contínuo - Classificação Inteligente de Ataques
@@ -350,8 +335,7 @@ train_script() {
     echo -e "${CYAN}${BOLD}================================================${RESET}"
     
     while true; do
-        echo -e "
-${BOLD}Escolha uma opção:${RESET}"
+        echo -e "\n${BOLD}Escolha uma opção:${RESET}"
         echo "1) Adicionar padrão manualmente"
         echo "2) Analisar eventos não classificados"
         echo "3) Sugerir padrões com IA"
@@ -385,8 +369,7 @@ ${BOLD}Escolha uma opção:${RESET}"
 
 # Função para adicionar padrão manualmente
 add_pattern_manually() {
-    echo -e "
-${BOLD}📝 ADICIONAR PADRÃO MANUALMENTE${RESET}"
+    echo -e "\n${BOLD}📝 ADICIONAR PADRÃO MANUALMENTE${RESET}"
     echo -e "${BOLD}==============================${RESET}"
     
     read -p "Regex/Pattern: " pattern
@@ -400,8 +383,7 @@ ${BOLD}📝 ADICIONAR PADRÃO MANUALMENTE${RESET}"
 
 # Função para analisar eventos não classificados
 analyze_unclassified_events() {
-    echo -e "
-${BOLD}🔍 ANALISANDO EVENTOS NÃO CLASSIFICADOS${RESET}"
+    echo -e "\n${BOLD}🔍 ANALISANDO EVENTOS NÃO CLASSIFICADOS${RESET}"
     echo -e "${BOLD}=====================================${RESET}"
     
     # Verifica se o arquivo de log existe
@@ -428,16 +410,14 @@ ${BOLD}🔍 ANALISANDO EVENTOS NÃO CLASSIFICADOS${RESET}"
     echo -e "${YELLOW}${BOLD}📊 Encontrados $unclassified_count eventos não classificados${RESET}"
     
     if [[ $unclassified_count -gt 0 ]]; then
-        echo -e "
-${BOLD}Primeiros 5 eventos não classificados:${RESET}"
+        echo -e "\n${BOLD}Primeiros 5 eventos não classificados:${RESET}"
         for i in "${!unclassified_events[@]}"; do
             if [[ $i -lt 5 ]]; then
                 echo -e "${CYAN}$((i+1)). ${unclassified_events[$i]}${RESET}"
             fi
         done
         
-        echo -e "
-${BOLD}💡 Dica: Use esses eventos para criar novos padrões${RESET}"
+        echo -e "\n${BOLD}💡 Dica: Use esses eventos para criar novos padrões${RESET}"
     else
         echo -e "${GREEN}${BOLD}✅ Todos os eventos foram classificados!${RESET}"
     fi
@@ -445,8 +425,7 @@ ${BOLD}💡 Dica: Use esses eventos para criar novos padrões${RESET}"
 
 # Função para sugerir padrões com IA (simulada)
 suggest_patterns_with_ai() {
-    echo -e "
-${BOLD}🤖 SUGESTÕES DE PADRÕES COM IA${RESET}"
+    echo -e "\n${BOLD}🤖 SUGESTÕES DE PADRÕES COM IA${RESET}"
     echo -e "${BOLD}================================${RESET}"
     
     # Verifica se o arquivo de log existe
@@ -461,16 +440,14 @@ ${BOLD}🤖 SUGESTÕES DE PADRÕES COM IA${RESET}"
     # Analisa padrões comuns em eventos não classificados
     local unclassified_patterns=$(grep -Eo '[A-Za-z0-9._-]+' "$LOG" | sort | uniq -c | sort -nr | head -10)
     
-    echo -e "
-${BOLD}Padrões mais frequentes:${RESET}"
+    echo -e "\n${BOLD}Padrões mais frequentes:${RESET}"
     echo "$unclassified_patterns" | while read count pattern; do
         if [[ $count -gt 2 ]]; then
             echo -e "${YELLOW}• $pattern (aparece $count vezes)${RESET}"
         fi
     done
     
-    echo -e "
-${BOLD}💡 Sugestões de classificação:${RESET}"
+    echo -e "\n${BOLD}💡 Sugestões de classificação:${RESET}"
     echo -e "${GREEN}• Padrões com números: Possível enumeração ou força bruta${RESET}"
     echo -e "${GREEN}• Padrões com extensões (.php, .js): Possível ataque web${RESET}"
     echo -e "${GREEN}• Padrões com caracteres especiais: Possível injeção${RESET}"
@@ -478,8 +455,7 @@ ${BOLD}💡 Sugestões de classificação:${RESET}"
 
 # Função para listar padrões existentes
 list_existing_patterns() {
-    echo -e "
-${BOLD}📋 PADRÕES EXISTENTES${RESET}"
+    echo -e "\n${BOLD}📋 PADRÕES EXISTENTES${RESET}"
     echo -e "${BOLD}====================${RESET}"
     
     local category_counts=()
@@ -517,10 +493,8 @@ analyze_line_by_line_enhanced() {
     echo -e "${CYAN}${BOLD}=====================================================${RESET}"
     
     # Cabeçalho da tabela melhorado
-    printf "%-6s | %-19s | %-15s | %-12s | %-5s | %-8s | %-15s | %-.30s
-" "Linha" "Timestamp" "IP" "Usuário" "Peso" "Nível" "Tipo Ataque" "Ação"
-    printf "${BLUE}%s${RESET}
-" "------------------------------------------------------------------------------------------------------------------------"
+    printf "%-6s | %-19s | %-15s | %-12s | %-5s | %-8s | %-15s | %-.30s\n" "Linha" "Timestamp" "IP" "Usuário" "Peso" "Nível" "Tipo Ataque" "Ação"
+    printf "${BLUE}%s${RESET}\n" "------------------------------------------------------------------------------------------------------------------------"
     
     # Contador de linha
     local line_number=0
@@ -543,8 +517,7 @@ analyze_line_by_line_enhanced() {
             local tags=$(echo "$classification" | cut -d'|' -f4)
             
             # Limita campos para exibição
-            local action_short=$(echo "$action" | tr '
-' ' ' | cut -c1-30)
+            local action_short=$(echo "$action" | tr '\n' ' ' | cut -c1-30)
             local attack_type_short=$(echo "$attack_type" | cut -c1-15)
             
             if [[ ${#action} -gt 30 ]]; then
@@ -576,8 +549,7 @@ analyze_line_by_line_enhanced() {
             fi
             
             # Linha separadora entre entradas
-            printf "${BLUE}%s${RESET}
-" "------------------------------------------------------------------------------------------------------------------------"
+            printf "${BLUE}%s${RESET}\n" "------------------------------------------------------------------------------------------------------------------------"
         fi
     done < "$LOG"
     
@@ -906,10 +878,8 @@ analyze_line_by_line() {
   echo -e "${CYAN}${BOLD}==================================================${RESET}"
   
   # Cabeçalho da tabela melhorado
-  printf "%-6s | %-19s | %-15s | %-12s | %-5s | %-8s | %-.40s
-" "Linha" "Timestamp" "IP" "Usuário" "Peso" "Nível" "Ação"
-  printf "${BLUE}%s${RESET}
-" "--------------------------------------------------------------------------------------------------------"
+  printf "%-6s | %-19s | %-15s | %-12s | %-5s | %-8s | %-.40s\n" "Linha" "Timestamp" "IP" "Usuário" "Peso" "Nível" "Ação"
+  printf "${BLUE}%s${RESET}\n" "--------------------------------------------------------------------------------------------------------"
   
   # Contador de linha
   local line_number=0
@@ -930,8 +900,7 @@ analyze_line_by_line() {
       local threats=$(echo "$threat_info" | cut -d'|' -f3)
       
       # Limita o campo ação a 40 caracteres e remove quebras de linha
-      local action_short=$(echo "$action" | tr '
-' ' ' | cut -c1-40)
+      local action_short=$(echo "$action" | tr '\n' ' ' | cut -c1-40)
       if [[ ${#action} -gt 40 ]]; then
         action_short="${action_short}..."
       fi
@@ -985,8 +954,7 @@ analyze_line_by_line() {
       fi
       
       # Linha separadora entre entradas
-      printf "${BLUE}%s${RESET}
-" "--------------------------------------------------------------------------------------------------------"
+      printf "${BLUE}%s${RESET}\n" "--------------------------------------------------------------------------------------------------------"
     fi
   done < "$LOG"
   

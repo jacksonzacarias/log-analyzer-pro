@@ -1,20 +1,5 @@
 #!/bin/bash
 
-# ==============================================================================
-# PROJETO: LOG ANALYZER PRO v5.0
-# ==============================================================================
-# Autor: Jackson A Z Savoldi
-# Data: 2024-06-29
-# LinkedIn: linkedin.com/in/jacksonzacarias
-# Instagram: @jacksonsavoldi
-# Formação: Sistemas de Informação - UNIPAR Paranavaí
-# Especialização: Segurança da Informação
-# ==============================================================================
-# Direitos reservados. Proibido uso, cópia ou redistribuição sem autorização.
-# ==============================================================================
-
-#!/bin/bash
-
 # ===================================================================================
 # TESTE DE PORTABILIDADE - SISTEMA DE ANÁLISE DE LOGS
 # ===================================================================================
@@ -23,21 +8,20 @@
 # ===================================================================================
 
 # Cores para output
-RED="[31m"
-GREEN="[32m"
-YELLOW="[33m"
-BLUE="[34m"
-CYAN="[36m"
-WHITE="[37m"
-BOLD="[1m"
-RESET="[0m"
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+CYAN="\e[36m"
+WHITE="\e[37m"
+BOLD="\e[1m"
+RESET="\e[0m"
 
 echo -e "${BOLD}${CYAN}🌍 TESTE DE PORTABILIDADE DO PROJETO${RESET}"
 echo -e "${BOLD}${CYAN}=====================================${RESET}"
 
 # Teste 1: Detecção do diretório raiz
-echo -e "
-${BOLD}${YELLOW}📁 Teste 1: Detecção do diretório raiz${RESET}"
+echo -e "\n${BOLD}${YELLOW}📁 Teste 1: Detecção do diretório raiz${RESET}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR" && pwd)"
 
@@ -52,8 +36,7 @@ else
 fi
 
 # Teste 2: Carregamento da configuração
-echo -e "
-${BOLD}${YELLOW}⚙️  Teste 2: Carregamento da configuração${RESET}"
+echo -e "\n${BOLD}${YELLOW}⚙️  Teste 2: Carregamento da configuração${RESET}"
 source "$PROJECT_ROOT/config/paths.conf"
 
 if [[ -n "$PROJECT_ROOT" ]]; then
@@ -64,8 +47,7 @@ else
 fi
 
 # Teste 3: Verificação de diretórios essenciais
-echo -e "
-${BOLD}${YELLOW}📂 Teste 3: Verificação de diretórios essenciais${RESET}"
+echo -e "\n${BOLD}${YELLOW}📂 Teste 3: Verificação de diretórios essenciais${RESET}"
 essential_dirs=(
     "$CONFIG_DIR"
     "$SRC_DIR"
@@ -90,17 +72,14 @@ for dir in "${essential_dirs[@]}"; do
 done
 
 if [[ ${#missing_dirs[@]} -gt 0 ]]; then
-    echo -e "
-${YELLOW}⚠️  Diretórios ausentes: ${missing_dirs[*]}${RESET}"
+    echo -e "\n${YELLOW}⚠️  Diretórios ausentes: ${missing_dirs[*]}${RESET}"
     echo -e "${BLUE}💡 Execute: ./scripts/criar_estrutura.sh${RESET}"
 else
-    echo -e "
-${GREEN}✅ Todos os diretórios essenciais encontrados${RESET}"
+    echo -e "\n${GREEN}✅ Todos os diretórios essenciais encontrados${RESET}"
 fi
 
 # Teste 4: Verificação de scripts principais
-echo -e "
-${BOLD}${YELLOW}🔧 Teste 4: Verificação de scripts principais${RESET}"
+echo -e "\n${BOLD}${YELLOW}🔧 Teste 4: Verificação de scripts principais${RESET}"
 main_scripts=(
     "$SRC_SCRIPTS_DIR/core/scriptlogs.sh"
     "$SRC_SCRIPTS_DIR/core/scriptlogs_avancado.sh"
@@ -118,8 +97,7 @@ for script in "${main_scripts[@]}"; do
 done
 
 # Teste 5: Verificação de permissões de execução
-echo -e "
-${BOLD}${YELLOW}🔐 Teste 5: Verificação de permissões${RESET}"
+echo -e "\n${BOLD}${YELLOW}🔐 Teste 5: Verificação de permissões${RESET}"
 for script in "${main_scripts[@]}"; do
     if [[ -f "$script" && -x "$script" ]]; then
         echo -e "${GREEN}✅ $(basename "$script") - Executável${RESET}"
@@ -129,8 +107,7 @@ for script in "${main_scripts[@]}"; do
 done
 
 # Teste 6: Teste do carregador de configuração
-echo -e "
-${BOLD}${YELLOW}🔄 Teste 6: Teste do carregador de configuração${RESET}"
+echo -e "\n${BOLD}${YELLOW}🔄 Teste 6: Teste do carregador de configuração${RESET}"
 if [[ -f "$SRC_SCRIPTS_DIR/utils/config_loader.sh" ]]; then
     source "$SRC_SCRIPTS_DIR/utils/config_loader.sh"
     if initialize_system "false"; then
@@ -143,8 +120,7 @@ else
 fi
 
 # Resumo final
-echo -e "
-${BOLD}${CYAN}📊 RESUMO DO TESTE DE PORTABILIDADE${RESET}"
+echo -e "\n${BOLD}${CYAN}📊 RESUMO DO TESTE DE PORTABILIDADE${RESET}"
 echo -e "${BOLD}${CYAN}=====================================${RESET}"
 
 if [[ ${#missing_dirs[@]} -eq 0 ]]; then
@@ -157,8 +133,7 @@ else
     echo -e "${YELLOW}⚠️  Execute: ./scripts/criar_estrutura.sh${RESET}"
 fi
 
-echo -e "
-${BOLD}${BLUE}🚀 Próximos passos:${RESET}"
+echo -e "\n${BOLD}${BLUE}🚀 Próximos passos:${RESET}"
 echo -e "1. Copie o projeto para a VM do Kali Linux"
 echo -e "2. Execute: chmod +x *.sh"
 echo -e "3. Execute: ./scripts/criar_estrutura.sh"
