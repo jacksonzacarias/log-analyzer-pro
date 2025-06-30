@@ -60,7 +60,19 @@ load_paths_config() {
     fi
     
     if [[ -f "$config_file" ]]; then
-        source "$config_file"
+        # Carrega configurações de forma segura, sem executar o arquivo
+        while IFS= read -r line || [[ -n "$line" ]]; do
+            # Pula comentários e linhas vazias
+            [[ "$line" =~ ^[[:space:]]*# ]] && continue
+            [[ -z "$line" ]] && continue
+            
+            # Processa apenas linhas que contêm atribuições
+            if [[ "$line" =~ ^[[:space:]]*[A-Z_][A-Z0-9_]*[[:space:]]*=[[:space:]]* ]]; then
+                # Remove espaços extras e executa a atribuição
+                eval "$line"
+            fi
+        done < "$config_file"
+        
         if [[ "$VERBOSE" == "true" ]]; then
             echo -e "${GREEN}${BOLD}✅ Configuração carregada: $config_file${RESET}"
         fi
@@ -80,7 +92,19 @@ load_main_config() {
     fi
     
     if [[ -f "$config_file" ]]; then
-        source "$config_file"
+        # Carrega configurações de forma segura, sem executar o arquivo
+        while IFS= read -r line || [[ -n "$line" ]]; do
+            # Pula comentários e linhas vazias
+            [[ "$line" =~ ^[[:space:]]*# ]] && continue
+            [[ -z "$line" ]] && continue
+            
+            # Processa apenas linhas que contêm atribuições
+            if [[ "$line" =~ ^[[:space:]]*[A-Z_][A-Z0-9_]*[[:space:]]*=[[:space:]]* ]]; then
+                # Remove espaços extras e executa a atribuição
+                eval "$line"
+            fi
+        done < "$config_file"
+        
         if [[ "$VERBOSE" == "true" ]]; then
             echo -e "${GREEN}${BOLD}✅ Configuração principal carregada: $config_file${RESET}"
         fi
