@@ -45,12 +45,51 @@ EOF
 # -------------------------------------------------------------------------------
 VERBOSE=false
 EXPLICA_TESTNET=false
-ACTION_REC=false
+ACTION_REC=true
 TIMELINE=false
 PEDAGO=false
 PCN=false
 REPORT="relatorio.html"
 LOG=""
+
+# Integração do seletor de arquivos por índice
+if [[ $# -eq 0 ]]; then
+  # Se não passar argumento, abrir menu interativo
+  if [[ -f "$PROJECT_ROOT/src/scripts/utils/file_selector.sh" ]]; then
+    source "$PROJECT_ROOT/src/scripts/utils/file_selector.sh"
+    
+    # Chamar o seletor (ele armazena os arquivos na variável global SELECTED_FILES)
+    select_files_by_index "$ANALOGS_DIR" "*.log" "Selecione o(s) arquivo(s) de log para análise"
+    
+    if [[ ${#SELECTED_FILES[@]} -eq 0 ]]; then
+      echo "❌ Nenhum arquivo selecionado. Abortando."
+      exit 1
+    fi
+    
+    # Usar apenas o primeiro arquivo selecionado
+    LOG="${SELECTED_FILES[0]}"
+    
+    if [[ ${#SELECTED_FILES[@]} -gt 1 ]]; then
+      echo "⚠️  Múltiplos arquivos selecionados. Usando apenas o primeiro: $(basename "$LOG")"
+    fi
+    
+    # Verificar se o arquivo existe
+    if [[ ! -f "$LOG" ]]; then
+      echo "❌ Arquivo selecionado não encontrado: $LOG"
+      exit 1
+    fi
+    
+    set -- "$LOG"
+  else
+    echo "❌ Seletor de arquivos não encontrado. Use: $0 <arquivo_de_log>"
+    exit 1
+  fi
+fi
+
+# Após a seleção interativa, se LOG já estiver definido, pule o processamento dos argumentos
+if [[ -n "$LOG" ]]; then
+  set --
+fi
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -69,7 +108,8 @@ while [[ $# -gt 0 ]]; do
       if [[ -z "$LOG" ]]; then
         LOG="$1"
       else
-        echo "❌ Múltiplos arquivos: '$LOG' e '$1'"
+        echo "❌ Múltiplos arquivos especificados: '$LOG' e '$1'"
+        echo "💡 Use apenas um arquivo ou execute sem argumentos para seleção interativa"
         exit 1
       fi
       ;;

@@ -17,69 +17,202 @@ WHITE="\e[37m"
 BOLD="\e[1m"
 RESET="\e[0m"
 
-echo -e "${BOLD}${CYAN}🚀 PREPARANDO PROJETO PARA VM DO KALI LINUX${RESET}"
-echo -e "${BOLD}${CYAN}============================================${RESET}"
-
 # Detecção do diretório raiz
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR" && pwd)"
 
-echo -e "${BOLD}${YELLOW}📁 Diretório do projeto: $PROJECT_ROOT${RESET}"
+# Função para limpar tela
+clear_screen() {
+    clear
+}
 
-# Passo 1: Recriar configuração dinâmica
-echo -e "\n${BOLD}${YELLOW}🔧 Passo 1: Recriando configuração dinâmica${RESET}"
-if [[ -f "$PROJECT_ROOT/src/scripts/utils/create_config.sh" ]]; then
-    bash "$PROJECT_ROOT/src/scripts/utils/create_config.sh"
-    if [[ $? -eq 0 ]]; then
-        echo -e "${GREEN}✅ Configuração recriada com sucesso${RESET}"
+# Função para mostrar cabeçalho
+show_header() {
+    clear_screen
+    echo -e "${BOLD}${CYAN}🚀 PREPARAÇÃO PARA VM DO KALI LINUX${RESET}"
+    echo -e "${BOLD}${CYAN}============================================${RESET}"
+    echo -e "${BOLD}📁 Diretório do projeto: $PROJECT_ROOT${RESET}"
+    echo ""
+}
+
+# Função para configurar permissões
+configure_permissions() {
+    echo -e "${BOLD}${YELLOW}🔐 Configurando permissões de execução${RESET}"
+    echo -e "${BOLD}${YELLOW}=====================================${RESET}"
+    
+    # Contar scripts antes
+    total_scripts=$(find "$PROJECT_ROOT" -name "*.sh" -type f | wc -l)
+    echo -e "📊 Total de scripts encontrados: $total_scripts"
+    
+    # Dar permissões
+    find "$PROJECT_ROOT" -name "*.sh" -type f -exec chmod +x {} \;
+    
+    # Verificar permissões
+    executable_scripts=$(find "$PROJECT_ROOT" -name "*.sh" -type f -executable | wc -l)
+    
+    if [[ $executable_scripts -eq $total_scripts ]]; then
+        echo -e "${GREEN}✅ Permissões configuradas com sucesso${RESET}"
+        echo -e "${GREEN}✅ $executable_scripts scripts agora são executáveis${RESET}"
     else
-        echo -e "${RED}❌ Falha ao recriar configuração${RESET}"
-        exit 1
+        echo -e "${YELLOW}⚠️  $executable_scripts de $total_scripts scripts são executáveis${RESET}"
     fi
-else
-    echo -e "${RED}❌ Script create_config.sh não encontrado${RESET}"
-    exit 1
-fi
+    
+    echo ""
+}
 
-# Passo 2: Dar permissões de execução
-echo -e "\n${BOLD}${YELLOW}🔐 Passo 2: Configurando permissões de execução${RESET}"
-find "$PROJECT_ROOT" -name "*.sh" -type f -exec chmod +x {} \;
-echo -e "${GREEN}✅ Permissões de execução configuradas${RESET}"
-
-# Passo 3: Criar estrutura de diretórios
-echo -e "\n${BOLD}${YELLOW}📂 Passo 3: Criando estrutura de diretórios${RESET}"
-if [[ -f "$PROJECT_ROOT/scripts/criar_estrutura.sh" ]]; then
-    bash "$PROJECT_ROOT/scripts/criar_estrutura.sh"
-    if [[ $? -eq 0 ]]; then
-        echo -e "${GREEN}✅ Estrutura de diretórios criada${RESET}"
+# Função para verificar dependências
+check_dependencies() {
+    echo -e "${BOLD}${YELLOW}🔍 Verificando dependências${RESET}"
+    echo -e "${BOLD}${YELLOW}========================${RESET}"
+    
+    local missing_deps=()
+    
+    # Verificar dependências essenciais
+    if ! command -v bash &> /dev/null; then
+        missing_deps+=("bash")
     else
-        echo -e "${RED}❌ Falha ao criar estrutura${RESET}"
+        echo -e "${GREEN}✅ bash${RESET}"
     fi
-else
-    echo -e "${YELLOW}⚠️  Script criar_estrutura.sh não encontrado${RESET}"
-fi
+    
+    if ! command -v grep &> /dev/null; then
+        missing_deps+=("grep")
+    else
+        echo -e "${GREEN}✅ grep${RESET}"
+    fi
+    
+    if ! command -v awk &> /dev/null; then
+        missing_deps+=("awk")
+    else
+        echo -e "${GREEN}✅ awk${RESET}"
+    fi
+    
+    if ! command -v sed &> /dev/null; then
+        missing_deps+=("sed")
+    else
+        echo -e "${GREEN}✅ sed${RESET}"
+    fi
+    
+    if ! command -v sort &> /dev/null; then
+        missing_deps+=("sort")
+    else
+        echo -e "${GREEN}✅ sort${RESET}"
+    fi
+    
+    if ! command -v uniq &> /dev/null; then
+        missing_deps+=("uniq")
+    else
+        echo -e "${GREEN}✅ uniq${RESET}"
+    fi
+    
+    # Verificar dependências opcionais
+    if ! command -v curl &> /dev/null; then
+        echo -e "${YELLOW}⚠️  curl (opcional)${RESET}"
+    else
+        echo -e "${GREEN}✅ curl${RESET}"
+    fi
+    
+    if ! command -v jq &> /dev/null; then
+        echo -e "${YELLOW}⚠️  jq (opcional)${RESET}"
+    else
+        echo -e "${GREEN}✅ jq${RESET}"
+    fi
+    
+    if ! command -v wget &> /dev/null; then
+        echo -e "${YELLOW}⚠️  wget (opcional)${RESET}"
+    else
+        echo -e "${GREEN}✅ wget${RESET}"
+    fi
+    
+    if [[ ${#missing_deps[@]} -gt 0 ]]; then
+        echo -e "\n${RED}❌ Dependências faltando: ${missing_deps[*]}${RESET}"
+        echo -e "${YELLOW}💡 Execute: sudo apt update && sudo apt install ${missing_deps[*]}${RESET}"
+        return 1
+    else
+        echo -e "\n${GREEN}✅ Todas as dependências essenciais estão presentes${RESET}"
+        return 0
+    fi
+    
+    echo ""
+}
 
-# Passo 4: Verificar estrutura
-echo -e "\n${BOLD}${YELLOW}🔍 Passo 4: Verificando estrutura do projeto${RESET}"
-if [[ -f "$PROJECT_ROOT/scripts/verificar_estrutura.sh" ]]; then
-    bash "$PROJECT_ROOT/scripts/verificar_estrutura.sh"
-else
-    echo -e "${YELLOW}⚠️  Script verificar_estrutura.sh não encontrado${RESET}"
-fi
+# Função para recriar configuração
+recreate_config() {
+    echo -e "${BOLD}${YELLOW}🔧 Recriando configuração dinâmica${RESET}"
+    echo -e "${BOLD}${YELLOW}==================================${RESET}"
+    
+    if [[ -f "$PROJECT_ROOT/src/scripts/utils/create_config.sh" ]]; then
+        bash "$PROJECT_ROOT/src/scripts/utils/create_config.sh"
+        if [[ $? -eq 0 ]]; then
+            echo -e "${GREEN}✅ Configuração recriada com sucesso${RESET}"
+        else
+            echo -e "${RED}❌ Falha ao recriar configuração${RESET}"
+            return 1
+        fi
+    else
+        echo -e "${RED}❌ Script create_config.sh não encontrado${RESET}"
+        return 1
+    fi
+    
+    echo ""
+}
 
-# Passo 5: Testar portabilidade
-echo -e "\n${BOLD}${YELLOW}🌍 Passo 5: Testando portabilidade${RESET}"
-if [[ -f "$PROJECT_ROOT/teste_portabilidade.sh" ]]; then
-    bash "$PROJECT_ROOT/teste_portabilidade.sh"
-else
-    echo -e "${YELLOW}⚠️  Script teste_portabilidade.sh não encontrado${RESET}"
-fi
+# Função para criar estrutura
+create_structure() {
+    echo -e "${BOLD}${YELLOW}📂 Criando estrutura de diretórios${RESET}"
+    echo -e "${BOLD}${YELLOW}================================${RESET}"
+    
+    if [[ -f "$PROJECT_ROOT/scripts/criar_estrutura.sh" ]]; then
+        bash "$PROJECT_ROOT/scripts/criar_estrutura.sh"
+        if [[ $? -eq 0 ]]; then
+            echo -e "${GREEN}✅ Estrutura de diretórios criada${RESET}"
+        else
+            echo -e "${RED}❌ Falha ao criar estrutura${RESET}"
+            return 1
+        fi
+    else
+        echo -e "${YELLOW}⚠️  Script criar_estrutura.sh não encontrado${RESET}"
+        return 1
+    fi
+    
+    echo ""
+}
 
-# Passo 6: Criar arquivo de instruções para VM
-echo -e "\n${BOLD}${YELLOW}📝 Passo 6: Criando instruções para VM${RESET}"
-INSTRUCTIONS_FILE="$PROJECT_ROOT/INSTRUCOES_VM.md"
+# Função para verificar estrutura
+verify_structure() {
+    echo -e "${BOLD}${YELLOW}🔍 Verificando estrutura do projeto${RESET}"
+    echo -e "${BOLD}${YELLOW}================================${RESET}"
+    
+    if [[ -f "$PROJECT_ROOT/scripts/verificar_estrutura.sh" ]]; then
+        bash "$PROJECT_ROOT/scripts/verificar_estrutura.sh"
+    else
+        echo -e "${YELLOW}⚠️  Script verificar_estrutura.sh não encontrado${RESET}"
+    fi
+    
+    echo ""
+}
 
-cat > "$INSTRUCTIONS_FILE" << 'EOF'
+# Função para testar portabilidade
+test_portability() {
+    echo -e "${BOLD}${YELLOW}🌍 Testando portabilidade${RESET}"
+    echo -e "${BOLD}${YELLOW}========================${RESET}"
+    
+    if [[ -f "$PROJECT_ROOT/teste_portabilidade.sh" ]]; then
+        bash "$PROJECT_ROOT/teste_portabilidade.sh"
+    else
+        echo -e "${YELLOW}⚠️  Script teste_portabilidade.sh não encontrado${RESET}"
+    fi
+    
+    echo ""
+}
+
+# Função para criar instruções
+create_instructions() {
+    echo -e "${BOLD}${YELLOW}📝 Criando instruções para VM${RESET}"
+    echo -e "${BOLD}${YELLOW}============================${RESET}"
+    
+    INSTRUCTIONS_FILE="$PROJECT_ROOT/INSTRUCOES_VM.md"
+    
+    cat > "$INSTRUCTIONS_FILE" << 'EOF'
 # INSTRUÇÕES PARA USO NA VM DO KALI LINUX
 
 ## Pré-requisitos
@@ -92,32 +225,25 @@ cat > "$INSTRUCTIONS_FILE" << 'EOF'
 ### 1. Clonar ou copiar o projeto
 ```bash
 # Se usando git:
-git clone <URL_DO_REPOSITORIO>
-cd logs
+git clone https://github.com/jacksonzacarias/log-analyzer-pro.git
+cd log-analyzer-pro
 
 # Se copiando arquivos:
 # Copie toda a pasta do projeto para a VM
 cd /caminho/para/o/projeto
 ```
 
-### 2. Configurar permissões
-```bash
-chmod +x *.sh
-chmod +x scripts/*.sh
-chmod +x src/scripts/**/*.sh
-```
-
-### 3. Executar preparação
+### 2. Executar preparação automática
 ```bash
 ./preparar_vm.sh
 ```
 
-### 4. Testar o sistema
+### 3. Testar o sistema
 ```bash
 ./iniciar_projeto.sh
 ```
 
-### 5. Executar análise de logs
+### 4. Executar análise de logs
 ```bash
 # Análise básica
 ./src/scripts/core/scriptlogs.sh
@@ -158,22 +284,102 @@ chmod +x src/scripts/**/*.sh
 ```
 EOF
 
-echo -e "${GREEN}✅ Instruções criadas: $INSTRUCTIONS_FILE${RESET}"
+    echo -e "${GREEN}✅ Instruções criadas: $INSTRUCTIONS_FILE${RESET}"
+    echo ""
+}
 
-# Resumo final
-echo -e "\n${BOLD}${CYAN}📊 RESUMO DA PREPARAÇÃO${RESET}"
-echo -e "${BOLD}${CYAN}========================${RESET}"
-echo -e "${GREEN}✅ Projeto preparado para VM do Kali Linux${RESET}"
-echo -e "${GREEN}✅ Configuração dinâmica criada${RESET}"
-echo -e "${GREEN}✅ Permissões configuradas${RESET}"
-echo -e "${GREEN}✅ Estrutura verificada${RESET}"
-echo -e "${GREEN}✅ Instruções criadas${RESET}"
+# Função para preparação automática completa
+auto_preparation() {
+    echo -e "${BOLD}${CYAN}🤖 PREPARAÇÃO AUTOMÁTICA COMPLETA${RESET}"
+    echo -e "${BOLD}${CYAN}================================${RESET}"
+    echo ""
+    
+    # Executar todos os passos
+    configure_permissions
+    check_dependencies
+    recreate_config
+    create_structure
+    verify_structure
+    test_portability
+    create_instructions
+    
+    echo -e "${BOLD}${GREEN}🎉 PREPARAÇÃO AUTOMÁTICA CONCLUÍDA!${RESET}"
+    echo ""
+}
 
-echo -e "\n${BOLD}${BLUE}🚀 PRÓXIMOS PASSOS:${RESET}"
-echo -e "1. Copie toda a pasta do projeto para a VM do Kali Linux"
-echo -e "2. Na VM, execute: cd /caminho/para/o/projeto"
-echo -e "3. Execute: ./preparar_vm.sh"
-echo -e "4. Execute: ./iniciar_projeto.sh"
-echo -e "5. Teste os scripts de análise"
+# Menu principal
+main_menu() {
+    while true; do
+        show_header
+        echo -e "${BOLD}${CYAN}MENU DE PREPARAÇÃO${RESET}"
+        echo -e "${BOLD}${CYAN}=================${RESET}"
+        echo ""
+        
+        echo -e "${GREEN}1)${RESET} 🔐 Configurar permissões (chmod +x)"
+        echo -e "${GREEN}2)${RESET} 🔍 Verificar dependências"
+        echo -e "${GREEN}3)${RESET} 🔧 Recriar configuração"
+        echo -e "${GREEN}4)${RESET} 📂 Criar estrutura"
+        echo -e "${GREEN}5)${RESET} 🔍 Verificar estrutura"
+        echo -e "${GREEN}6)${RESET} 🌍 Testar portabilidade"
+        echo -e "${GREEN}7)${RESET} 📝 Criar instruções"
+        echo -e "${GREEN}8)${RESET} 🤖 TUDO AUTOMÁTICO"
+        echo ""
+        echo -e "${GREEN}0)${RESET} 🚪 Sair"
+        echo ""
+        
+        read -p "Escolha uma opção (0-8): " choice
+        
+        case $choice in
+            1) configure_permissions ;;
+            2) check_dependencies ;;
+            3) recreate_config ;;
+            4) create_structure ;;
+            5) verify_structure ;;
+            6) test_portability ;;
+            7) create_instructions ;;
+            8) auto_preparation ;;
+            0) 
+                echo -e "${GREEN}👋 Saindo...${RESET}"
+                exit 0
+                ;;
+            *) 
+                echo -e "${RED}❌ Opção inválida${RESET}"
+                sleep 2
+                ;;
+        esac
+        
+        if [[ $choice -ne 0 ]]; then
+            echo ""
+            read -p "Pressione ENTER para continuar..."
+        fi
+    done
+}
 
-echo -e "\n${BOLD}${GREEN}🎉 PROJETO PRONTO PARA USO NA VM!${RESET}" 
+# Verificar se foi chamado com argumentos
+if [[ $# -eq 0 ]]; then
+    # Modo interativo
+    main_menu
+else
+    # Modo automático (compatibilidade)
+    show_header
+    echo -e "${BOLD}${YELLOW}📁 Diretório do projeto: $PROJECT_ROOT${RESET}"
+    auto_preparation
+    
+    # Resumo final
+    echo -e "\n${BOLD}${CYAN}📊 RESUMO DA PREPARAÇÃO${RESET}"
+    echo -e "${BOLD}${CYAN}========================${RESET}"
+    echo -e "${GREEN}✅ Projeto preparado para VM do Kali Linux${RESET}"
+    echo -e "${GREEN}✅ Configuração dinâmica criada${RESET}"
+    echo -e "${GREEN}✅ Permissões configuradas${RESET}"
+    echo -e "${GREEN}✅ Estrutura verificada${RESET}"
+    echo -e "${GREEN}✅ Instruções criadas${RESET}"
+
+    echo -e "\n${BOLD}${BLUE}🚀 PRÓXIMOS PASSOS:${RESET}"
+    echo -e "1. Copie toda a pasta do projeto para a VM do Kali Linux"
+    echo -e "2. Na VM, execute: cd /caminho/para/o/projeto"
+    echo -e "3. Execute: ./preparar_vm.sh"
+    echo -e "4. Execute: ./iniciar_projeto.sh"
+    echo -e "5. Teste os scripts de análise"
+
+    echo -e "\n${BOLD}${GREEN}🎉 PROJETO PRONTO PARA USO NA VM!${RESET}"
+fi 
