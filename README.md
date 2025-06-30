@@ -1,15 +1,3 @@
-# ==============================================================================
-# PROJETO: LOG ANALYZER PRO v5.0
-# ==============================================================================
-# Autor: Jackson A Z Savoldi
-# Data: 2024-06-29
-# LinkedIn: linkedin.com/in/jacksonzacarias
-# Instagram: @jacksonsavoldi
-# Formação: Sistemas de Informação - UNIPAR Paranavaí
-# Especialização: Segurança da Informação
-# ==============================================================================
-# Direitos reservados. Proibido uso, cópia ou redistribuição sem autorização.
-# ==============================================================================
 
 # LOG ANALYZER PRO v5.0
 
