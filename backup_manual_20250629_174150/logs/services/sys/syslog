@@ -1,1 +1,0 @@
-Jun 29 10:07:30 server1 kernel: audit: type=1400 apparmor="DENIED" operation="exec" profile="/usr/sbin/nginx" comm="nginx"

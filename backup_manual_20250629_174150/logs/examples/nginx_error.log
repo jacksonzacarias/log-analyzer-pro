@@ -1,3 +1,0 @@
-2025/06/29 10:05:11 [error] 10245#10245: *3456 open() "/var/www/html/.env" failed (13: Permission denied), client: 203.0.113.5, server: example.com, request: "GET /.env HTTP/1.1", host: "example.com"  
-2025/06/29 10:05:13 [warn] 10245#10245: *3457 an upstream response is buffered to a temporary file /var/cache/nginx/fastcgi_temp/3/03/000000003, client: 203.0.113.5, server: example.com, request: "POST /wp-login.php HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "example.com"  
-2025/06/29 10:05:17 [error] 10245#10245: *3458 client intended to send too large body: 10485760 bytes, client: 203.0.113.5, server: example.com, request: "POST /api/upload HTTP/1.1", host: "example.com"  

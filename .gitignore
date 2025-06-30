@@ -3,6 +3,10 @@
 *.tmp
 *.temp
 
+# Pastas de backup com datas
+backup_*/
+backup_manual_*/
+
 # Logs do sistema
 system/logs/*
 !system/logs/.gitkeep
@@ -36,6 +40,15 @@ config/secrets.conf
 # Arquivos do sistema
 .DS_Store
 Thumbs.db
+
+# Pastas de compilação e resultados
+compilado/
+results/resultados_*/
+relatorio*.html
+
+# Logs realistas (podem ser regenerados)
+analogs/realistic/
+analogs/logs_realistas/
 
 # Payloads de terceiros (não versionar)
 payloads/sql-injection-payload-list/
